@@ -1,0 +1,3 @@
+date	size'/'remotesize	flags(request:Update,Range state:File response:Modified,Chunked,gZipped)	statuscode	status ('servermsg')	MIME	Etag|Date	URL	localfile	(from URL)
+11:27:43	140/140	---MCZ	404	error ('Not%20Found')	text/html	date:Mon,%2003%20Jan%202022%2004:27:43%20GMT	https://acorn-html-medical-assistant.coloredstrategies.com/robots.txt		(from )
+11:27:43	55563/55563	U-----	200	untouched ('OK')	text/html	etag:W/%2261900b1e-d90b%22	https://acorn-html-medical-assistant.coloredstrategies.com/Dashboards.Patient.html	C:/Users/Kabilack/Downloads/nyobaterus/acorn-html-medical-assistant.coloredstrategies.com/Dashboards.Patient.html	(from )
