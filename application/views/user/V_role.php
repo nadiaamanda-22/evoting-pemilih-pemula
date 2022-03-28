@@ -32,19 +32,6 @@
                         </tr>
                      </thead>
                      <tbody>
-                        <tr>
-                           <td scope="row">1</td>
-                           <td>Admin KPU</td>
-                           <td>
-                              <!-- tombol sementara -->
-                              <button type="button" class="btn btn-gradient warnaprimer" data-bs-toggle="modal" data-bs-target="#editRole"><i class="far fa-edit"></i></button>
-
-                              <!-- tombol aslinya -->
-                              <!-- <a href="<?= base_url('role/editRole') ?>" class="btn btn-gradient warnaprimer" data-toggle="modal" data-target="#editRole"><i class="far fa-edit"></i></a> -->
-
-                              <a href="#" class=" btn btn-gradient warnadanger"><i class="far fa-trash-alt"></i></a>
-                           </td>
-                        </tr>
                      </tbody>
                   </table>
                </div>
@@ -57,15 +44,9 @@
       </div>
       <!-- page content -->
 
-      <script>
-         $(document).ready(function() {
-            $('#tableRole').DataTable();
-         });
-      </script>
-
 
       <!-- Modal Tambah  -->
-      <div class="modal fade" id="addRole" tabindex="-1" aria-labelledby="addRoleLabel" aria-hidden="true">
+      <!-- <div class="modal fade" id="addRole" tabindex="-1" aria-labelledby="addRoleLabel" aria-hidden="true">
          <div class="modal-dialog">
             <div class="modal-content">
                <div class="modal-header">
@@ -92,14 +73,14 @@
                </div>
             </div>
          </div>
-      </div>
+      </div> -->
       <!-- Akhir modal tambah -->
 
    </div>
    <!-- main content -->
 
    <!-- Modal edit -->
-   <div class="modal fade" id="editRole" tabindex="-1" aria-labelledby="editRoleLabel" aria-hidden="true">
+   <!-- <div class="modal fade" id="editRole" tabindex="-1" aria-labelledby="editRoleLabel" aria-hidden="true">
       <div class="modal-dialog">
          <div class="modal-content">
             <div class="modal-header">
@@ -125,5 +106,64 @@
             </div>
          </div>
       </div>
-   </div>
+   </div> -->
    <!-- Akhir modal edit-->
+
+   <script>
+      //reload table
+      function reloadTable() {
+         TblBarang.ajax.reload();
+      }
+
+      //datatable
+      $(document).ready(function() {
+
+         var table = $('#tableRole');
+
+         TblBarang = table.DataTable({
+
+            ajax: {
+               url: base_url + "barang/ngambilData",
+               type: "POST",
+               dataSrc: "",
+               dataType: "json",
+               data: function(d) {
+                  nomer = 0;
+               },
+            },
+            columns: [{
+                  render: function(full, type, data, meta) {
+                     return nomer += 1;
+                     return nomer;
+                  }
+               },
+               {
+                  render: function(full, type, data, meta) {
+                     return data.kode_barang;
+                  }
+               },
+               {
+                  render: function(full, type, data, meta) {
+                     return data.nama_barang;
+                  }
+               },
+               {
+                  render: function(full, type, data, meta) {
+                     return data.harga;
+                  }
+               },
+               {
+                  render: function(full, type, data, meta) {
+                     return data.stok;
+                  }
+               },
+               {
+                  render: function(full, type, data, meta) {
+                     return `<button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#editBarang" onclick='edit(${data.id_barang})'>Edit</button>
+                			<button type="button" class="btn btn-danger btn-sm" onclick='hapus(${data.id_barang})'>Hapus</button>`;
+                  }
+               }
+            ]
+         });
+      });
+   </script>

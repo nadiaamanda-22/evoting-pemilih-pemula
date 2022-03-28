@@ -197,7 +197,7 @@
       </header>
 
       <!-- sidebar kiri -->
-      <div class="vertical-menu">
+      <div class="vertical-menu warnaprimer">
 
          <div data-simplebar class="h-100">
 
@@ -217,7 +217,7 @@
                   <li>
                      <a href="<?= base_url('jenisinstansi') ?>" class="waves-effect">
                         <i class="bx bx-receipt"></i>
-                        <span key="t-ji">Jenis Instansi</span>
+                        <span key="t-ji">Instansi</span>
                      </a>
                   </li>
 
@@ -229,23 +229,7 @@
                   </li>
 
 
-                  <li class="menu-title warnafont" key="t-kampus">Kampus</li>
-
-                  <li>
-                     <a href="<?= base_url('fakultas') ?>" class="waves-effect">
-                        <i class="bx bx-store"></i>
-                        <span key="t-kmps">Fakultas</span>
-                     </a>
-                  </li>
-
-                  <li>
-                     <a href="<?= base_url('prodi') ?>" class="waves-effect">
-                        <i class="bx bx-store"></i>
-                        <span key="t-prd">Prodi</span>
-                     </a>
-                  </li>
-
-                  <li class="menu-title warnafont" key="t-aplikasi">Manajemen Aplikasi</li>
+                  <!-- <li class="menu-title warnafont" key="t-aplikasi">Manajemen Aplikasi</li>
 
                   <li>
                      <a href="chat.html" class="waves-effect">
@@ -261,28 +245,26 @@
                      </a>
                   </li>
 
-
-                  <li class="menu-title warnafont" key="t-sidebar">Sidebar</li>
-
                   <li>
                      <a href="<?= base_url('menu') ?>" class="waves-effect">
                         <i class="bx bx-task"></i>
-                        <span key="t-menu">Menu</span>
+                        <span key="t-menu">Menu Admin</span>
                      </a>
                   </li>
 
                   <li>
                      <a href="<?= base_url('submenu') ?>" class="waves-effect">
                         <i class="bx bx-task"></i>
-                        <span key="t-submenu">Submenu</span>
+                        <span key="t-submenu">Submenu Admin</span>
                      </a>
-                  </li>
+                  </li> -->
 
                   <li class="menu-title warnafont" key="t-pemilihan">Pemilihan</li>
+
                   <li>
-                     <a href="<?= base_url('jeniskandidat') ?>" class="waves-effect">
-                        <i class="bx bxs-user-detail"></i>
-                        <span key="t-jk">Jenis Kandidat</span>
+                     <a href="chat.html" class="waves-effect">
+                        <i class="bx bx-file"></i>
+                        <span key="t-dpt">Daftar Pemilih Tetap</span>
                      </a>
                   </li>
 
