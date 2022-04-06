@@ -1,0 +1,66 @@
+.warnaprimer {
+ background-color: #d67d3e;
+ color: #fff;
+}
+
+.warnadanger {
+    background-color: #f44f4f;
+    color: #fff;
+}
+
+.warnacancel {
+    background-color:#7e7f84;
+    color: #fff;
+}
+
+.warnaputih {
+    background-color: #fff;
+}
+
+.navbar-brand-box {
+   border-bottom: 1px solid #fff;
+}
+
+.warnafont{
+    color: #fff;
+}
+
+#sidebar-menu ul li a {
+    color: #fff;
+}
+
+#sidebar-menu ul li a i{
+    color: #fff;
+}
+
+.logo-lg .logoo img {
+   width: 60px;
+}
+
+.logo-sm img {
+   width: 45px;
+   margin-left: -11px;
+}
+
+.logo-lg .logoo h3 {
+   color: #fff;
+   font-size: 17px;
+   margin-top: 25px;
+}
+
+.mm-active>a {
+    color: #ffffff!important;
+}
+
+.mm-active>a i{
+    color: #ffffff!important;
+
+}
+
+.mm-active .active {
+    color: #fff!important;
+}
+
+.mm-active .active i {
+    color: #fff!important;
+}
