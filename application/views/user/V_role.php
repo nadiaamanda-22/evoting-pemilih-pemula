@@ -60,7 +60,7 @@
                         <div class="form-group" style="margin-bottom: 20px;">
                            <label class="col-lg-4 col-sm-4 control-label">Role</label>
                            <div class="col-md-12">
-                              <input type="hidden" class="form-control" id="id_role">
+                              <!-- <input type="hidden" class="form-control" id="id_role"> -->
                               <input type="text" class="form-control" id="role" name="role" placeholder="Masukkan Role">
                            </div>
                         </div>
