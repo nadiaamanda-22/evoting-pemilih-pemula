@@ -32,19 +32,6 @@
                         </tr>
                      </thead>
                      <tbody>
-                        <tr>
-                           <td scope="row">1</td>
-                           <td>Admin KPU</td>
-                           <td>
-                              <!-- tombol sementara -->
-                              <button type="button" class="btn btn-gradient warnaprimer" data-bs-toggle="modal" data-bs-target="#editRole"><i class="far fa-edit"></i></button>
-
-                              <!-- tombol aslinya -->
-                              <!-- <a href="<?= base_url('role/editRole') ?>" class="btn btn-gradient warnaprimer" data-toggle="modal" data-target="#editRole"><i class="far fa-edit"></i></a> -->
-
-                              <a href="#" class=" btn btn-gradient warnadanger"><i class="far fa-trash-alt"></i></a>
-                           </td>
-                        </tr>
                      </tbody>
                   </table>
                </div>
@@ -56,12 +43,6 @@
          <!-- container fluid -->
       </div>
       <!-- page content -->
-
-      <script>
-         $(document).ready(function() {
-            $('#tableRole').DataTable();
-         });
-      </script>
 
 
       <!-- Modal Tambah  -->
@@ -79,14 +60,14 @@
                         <div class="form-group" style="margin-bottom: 20px;">
                            <label class="col-lg-4 col-sm-4 control-label">Role</label>
                            <div class="col-md-12">
-                              <input type="hidden" class="form-control">
-                              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan Role">
+                              <input type="hidden" class="form-control" id="id_role">
+                              <input type="text" class="form-control" id="role" name="role" placeholder="Masukkan Role">
                            </div>
                         </div>
 
                   </form>
                   <div class="modal-footer">
-                     <button type="button" class="btn btn-gradient warnaprimer">Simpan</button>
+                     <button type="button" class="btn btn-gradient warnaprimer" id="tambah" onclick="ButtonTambah()">Simpan</button>
                      <button type="button" class="btn btn-gradient warnacancel" data-bs-dismiss="modal">Batal</button>
                   </div>
                </div>
@@ -99,7 +80,7 @@
    <!-- main content -->
 
    <!-- Modal edit -->
-   <div class="modal fade" id="editRole" tabindex="-1" aria-labelledby="editRoleLabel" aria-hidden="true">
+   <!-- <div class="modal fade" id="editRole" tabindex="-1" aria-labelledby="editRoleLabel" aria-hidden="true">
       <div class="modal-dialog">
          <div class="modal-content">
             <div class="modal-header">
@@ -125,5 +106,69 @@
             </div>
          </div>
       </div>
-   </div>
+   </div> -->
    <!-- Akhir modal edit-->
+
+   <script>
+      //reload table
+      function reloadTable() {
+         TblRole.ajax.reload();
+      }
+
+      //datatable
+      $(document).ready(function() {
+
+         var table = $('#tableRole');
+
+         TblRole = table.DataTable({
+
+            ajax: {
+               url: base + "Role/ngambilData",
+               type: "POST",
+               dataSrc: "",
+               dataType: "json",
+               data: function(d) {
+                  nomer = 0;
+               },
+            },
+            columns: [{
+                  render: function(full, type, data, meta) {
+                     return nomer += 1;
+                     return nomer;
+                  }
+               },
+               {
+                  render: function(full, type, data, meta) {
+                     return data.role;
+                  }
+               },
+               {
+                  render: function(full, type, data, meta) {
+                     return `<button  class="btn btn-sm warnaprimer" data-bs-toggle="modal" data-bs-target="#editRole" onclick='edit(${data.id_barang})'>Edit</button>
+                			<button type="button" class="btn btn-sm warnadanger" onclick='hapus(${data.id_barang})'>Hapus</button>`;
+                  }
+               }
+            ]
+         });
+      });
+
+      // tambah
+      function ButtonTambah() {
+         let id_role = $('#id_role').val();
+         let role = $('#role').val();
+         console.log(role);
+         $.ajax({
+            url: base + 'Role/tambahData',
+            data: {
+               id_role: id_role,
+               role: role
+            },
+            dataType: 'json',
+            type: 'POST',
+            cache: false,
+            success: function(response) {
+               alert("Data berhasil ditambah");
+            }
+         })
+      }
+   </script>

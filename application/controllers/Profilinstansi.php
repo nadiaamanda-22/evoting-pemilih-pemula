@@ -7,12 +7,4 @@ class Profilinstansi extends CI_Controller
    {
       $this->template->load('templates/template_backend', 'instansi/V_profilinstansi');
    }
-
-   public function addInstansi()
-   {
-   }
-
-   public function editInstansi()
-   {
-   }
 }

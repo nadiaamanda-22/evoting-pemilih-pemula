@@ -35,6 +35,9 @@
 <script src="<?= base_url('assets/libs/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
 
 <body>
+   <script>
+      const base = '<?= base_url() ?>'
+   </script>
    <!-- Begin page -->
    <div id="layout-wrapper">
       <header id="page-topbar">
@@ -177,16 +180,19 @@
                <!-- Profil -->
                <div class="dropdown d-inline-block">
                   <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg" alt="Header Avatar">
-                     <span class="d-none d-xl-inline-block ms-1" key="t-henry">Nadia</span>
+                     <img class="rounded-circle header-profile-user" src="<?= base_url('assets/gambar/profil.png') ?>" alt="Header Avatar">
+                     <span class="d-none d-xl-inline-block ms-1" key="t-henry">Admin Instansi</span>
                      <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                   </button>
                   <div class="dropdown-menu dropdown-menu-end">
                      <!-- item-->
-                     <a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">Profile</span></a>
+                     <a class="dropdown-item" href="<?= base_url('profilakun') ?>"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">Profil Akun</span></a>
 
                      <div class="dropdown-divider"></div>
-                     <a class="dropdown-item text-danger" href="#"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">Logout</span></a>
+                     <a class="dropdown-item" href="<?= base_url('profilinstansi') ?>"><i class="bx bx-store font-size-16 align-middle me-1"></i> <span key="t-logout">Profil Instansi</span></a>
+
+                     <div class="dropdown-divider"></div>
+                     <a class="dropdown-item" href="#"><i class="bx bx-power-off font-size-16 align-middle me-1"></i> <span key="t-logout">Logout</span></a>
                   </div>
                </div>
                <!-- end profil -->
@@ -197,7 +203,7 @@
       </header>
 
       <!-- sidebar kiri -->
-      <div class="vertical-menu">
+      <div class="vertical-menu warnaprimer">
 
          <div data-simplebar class="h-100">
 
@@ -212,40 +218,8 @@
                      </a>
                   </li>
 
-                  <li class="menu-title warnafont" key="t-instansi">Instansi</li>
 
-                  <li>
-                     <a href="<?= base_url('jenisinstansi') ?>" class="waves-effect">
-                        <i class="bx bx-receipt"></i>
-                        <span key="t-ji">Jenis Instansi</span>
-                     </a>
-                  </li>
-
-                  <li>
-                     <a href="<?= base_url('profilinstansi') ?>" class="waves-effect">
-                        <i class="bx bx-store"></i>
-                        <span key="t-pi">Profil Instansi</span>
-                     </a>
-                  </li>
-
-
-                  <li class="menu-title warnafont" key="t-kampus">Kampus</li>
-
-                  <li>
-                     <a href="<?= base_url('fakultas') ?>" class="waves-effect">
-                        <i class="bx bx-store"></i>
-                        <span key="t-kmps">Fakultas</span>
-                     </a>
-                  </li>
-
-                  <li>
-                     <a href="<?= base_url('prodi') ?>" class="waves-effect">
-                        <i class="bx bx-store"></i>
-                        <span key="t-prd">Prodi</span>
-                     </a>
-                  </li>
-
-                  <li class="menu-title warnafont" key="t-aplikasi">Manajemen Aplikasi</li>
+                  <!-- <li class="menu-title warnafont" key="t-aplikasi">Manajemen Aplikasi</li>
 
                   <li>
                      <a href="chat.html" class="waves-effect">
@@ -261,28 +235,26 @@
                      </a>
                   </li>
 
-
-                  <li class="menu-title warnafont" key="t-sidebar">Sidebar</li>
-
                   <li>
                      <a href="<?= base_url('menu') ?>" class="waves-effect">
                         <i class="bx bx-task"></i>
-                        <span key="t-menu">Menu</span>
+                        <span key="t-menu">Menu Admin</span>
                      </a>
                   </li>
 
                   <li>
                      <a href="<?= base_url('submenu') ?>" class="waves-effect">
                         <i class="bx bx-task"></i>
-                        <span key="t-submenu">Submenu</span>
+                        <span key="t-submenu">Submenu Admin</span>
                      </a>
-                  </li>
+                  </li> -->
 
                   <li class="menu-title warnafont" key="t-pemilihan">Pemilihan</li>
+
                   <li>
-                     <a href="<?= base_url('jeniskandidat') ?>" class="waves-effect">
-                        <i class="bx bxs-user-detail"></i>
-                        <span key="t-jk">Jenis Kandidat</span>
+                     <a href="<?= base_url('dpt') ?>" class="waves-effect">
+                        <i class="bx bx-file"></i>
+                        <span key="t-dpt">Daftar Pemilih Tetap</span>
                      </a>
                   </li>
 
@@ -294,16 +266,16 @@
                   </li>
 
                   <li>
-                     <a href="chat.html" class="waves-effect">
+                     <a href="<?= base_url('pemilihan') ?>" class="waves-effect">
                         <i class="bx bx-list-ul"></i>
                         <span key="t-pmlhn">Pemilihan</span>
                      </a>
                   </li>
 
                   <li>
-                     <a href="chat.html" class="waves-effect">
+                     <a href="<?= base_url('hasilpemilihan') ?>" class="waves-effect">
                         <i class="bx bx-file"></i>
-                        <span key="t-hasil">Hasil</span>
+                        <span key="t-hasil">Hasil Pemilihan</span>
                      </a>
                   </li>
 

@@ -64,3 +64,32 @@
 .mm-active .active i {
     color: #fff!important;
 }
+
+
+.cardhasil{
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+
+.cardhasil .card-header {
+    text-align: center;
+    min-width: 10vw;
+	min-height: 5vh;
+}
+
+.cardhasil .card-body {
+    text-align: center;
+    height: 150px;
+}
+
+.cardhasil .card-body h5{
+    font-size: 25px;
+    color: #858796;
+    font-weight: 400;
+}
+
+.cardhasil .card-body h6{
+    font-size: 20px;
+    color: #858796;
+    font-weight: 400;
+}
