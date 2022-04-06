@@ -2,7 +2,7 @@
 
 const { json } = require('express/lib/response');
 
-module.exports = function(app){
+module.exports = function (app) {
     var jsonku = require('./controller');
 
     app.route('/').get(jsonku.index);
@@ -12,7 +12,7 @@ module.exports = function(app){
     app.route('/tampilrole/:id').get(jsonku.tampildatarolebyid);
 
     app.route('/tambahrole').post(jsonku.tambahrole);
-    
+
     app.route('/ubahrole').put(jsonku.ubahrole);
 
     app.route('/hapusrole').delete(jsonku.hapusrole);
