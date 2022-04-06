@@ -28,7 +28,7 @@
       <div class="container">
          <div class="row justify-content-center">
             <div class="col-md-8 col-lg-6 col-xl-5">
-               <div class="card overflow-hidden">
+               <div class="cardlogin overflow-hidden shadow mb-5 bg-body rounded">
                   <div class="warnaprimer">
                      <div class="row">
                         <div class="col-7">

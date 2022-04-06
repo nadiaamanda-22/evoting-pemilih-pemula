@@ -21,7 +21,7 @@
                         <div class="card-body">
                            <div class="d-flex">
                               <div class="flex-grow-1">
-                                 <p class="text-muted fw-medium">Orders</p>
+                                 <p class="text-muted fw-medium" style="text-align: left;">Jumlah Daftar Pemilih Tetap</p>
                                  <h4 class="mb-0">1,235</h4>
                               </div>
 
@@ -41,7 +41,7 @@
                         <div class="card-body">
                            <div class="d-flex">
                               <div class="flex-grow-1">
-                                 <p class="text-muted fw-medium">Orders</p>
+                                 <p class="text-muted fw-medium" style="text-align: left;">Jumlah Pemilih Sudah Memilih</p>
                                  <h4 class="mb-0">1,235</h4>
                               </div>
 
@@ -56,7 +56,7 @@
                         </div>
                      </div>
                   </div>
-                  <div class="col-md-3">
+                  <!-- <div class="col-md-3">
                      <div class="card mini-stats-wid">
                         <div class="card-body">
                            <div class="d-flex">
@@ -95,32 +95,11 @@
                            </div>
                         </div>
                      </div>
-                  </div>
+                  </div> -->
                </div>
                <!-- end row -->
 
-               <div class="card">
-                  <div class="card-body">
-                     <div class="d-sm-flex flex-wrap">
-                        <h4 class="card-title mb-4">Email Sent</h4>
-                        <div class="ms-auto">
-                           <ul class="nav nav-pills">
-                              <li class="nav-item">
-                                 <a class="nav-link" href="#">Week</a>
-                              </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="#">Month</a>
-                              </li>
-                              <li class="nav-item">
-                                 <a class="nav-link active" href="#">Year</a>
-                              </li>
-                           </ul>
-                        </div>
-                     </div>
 
-                     <div id="stacked-column-chart" class="apex-charts" dir="ltr"></div>
-                  </div>
-               </div>
             </div>
          </div>
          <!-- end row -->

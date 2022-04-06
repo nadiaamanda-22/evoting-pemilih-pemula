@@ -29,6 +29,7 @@
                            <th scope="col">No</th>
                            <th scope="col">Nama Kandidat</th>
                            <th scope="col">Nama Pasangan Kandidat</th>
+                           <th scope="col">Foto Kandidat</th>
                            <th scope="col">Aksi</th>
                         </tr>
                      </thead>
@@ -37,6 +38,7 @@
                            <td scope="row">1</td>
                            <td>Muhammad</td>
                            <td>Ahmad</td>
+                           <td><img src="<?= base_url('assets/gambar/pidato.jpg') ?>" width="100" height="100"></td>
                            <td>
                               <!-- tombol sementara -->
                               <button type="button" class="btn btn-gradient warnaprimer" data-bs-toggle="modal" data-bs-target="#editKandidat"><i class="far fa-edit"></i></button>
@@ -92,6 +94,14 @@
                               <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan Nama Pasangan Kandidat">
                            </div>
                         </div>
+
+                        <div class="form-group" style="margin-bottom: 20px;">
+                           <label class="col-lg-4 col-sm-4 control-label">Gambar Kandidat</label>
+                           <div class="col-md-12">
+                              <input class="form-control" type="file" id="formFile">
+                           </div>
+                        </div>
+
                   </form>
                   <div class="modal-footer">
                      <button type="button" class="btn btn-gradient warnaprimer">Simpan</button>
@@ -133,6 +143,14 @@
                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan Nama Pasangan Kandidat">
                         </div>
                      </div>
+
+                     <div class="form-group" style="margin-bottom: 20px;">
+                        <label class="col-lg-4 col-sm-4 control-label">Gambar Kandidat</label>
+                        <div class="col-md-12">
+                           <input class="form-control" type="file" id="formFile">
+                        </div>
+                     </div>
+
                </form>
                <div class="modal-footer">
                   <button type="button" class="btn btn-gradient warnaprimer">Simpan</button>
