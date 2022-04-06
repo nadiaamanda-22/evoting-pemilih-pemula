@@ -1,0 +1,34 @@
+{root.api}/{version}/{grouping}/{endpoint}
+
+contoh
+https://api.pemilihpemula.com/v1/auth/login
+
+Standar Status Response
+
+200 - OK                        -> Call API Success
+201 - CREATED                   -> Post Success
+400 - BAD REQUEST               -> Error on Client Side
+401 - UNAUTHORIZED              -> User not Authorized to the Request
+403 - FORBIDDEN                 -> User not Allowed to Access
+404 - NOT FOUND                 -> Request Endpoint Not Found
+500 - INTERNAL SERVER ERROR     -> Error on Server Side
+502 - BAD GATEWAY               -> Invalid Response From Another Request
+
+GROUP: Authentication
+[1] - Login Admin       (Web)
+{root.api}/{version}/auth/login
+
+req:
+{
+    username: "test",
+    password: md5("password")
+}
+
+[2] - Login Pemilih     (Mobile)
+{root.api}/{version}/auth/member
+
+req:
+{
+    npm: "npm",
+    password: "password"
+}
