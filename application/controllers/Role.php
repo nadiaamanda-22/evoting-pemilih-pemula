@@ -30,7 +30,7 @@ class Role extends CI_Controller
       $role =  $this->input->post('role');
 
       $ch = curl_init();
-      $url = "http://localhost:4000/tambahrole";
+      $url = "http://localhost:4000/v2/tambahrole";
       $postapi = [
          'role' => $role
       ];

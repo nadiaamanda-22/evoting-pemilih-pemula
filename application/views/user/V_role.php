@@ -156,7 +156,7 @@
       function ButtonTambah() {
          let id_role = $('#id_role').val();
          let role = $('#role').val();
-         console.log(role);
+         console.log('role');
          $.ajax({
             url: base + 'Role/tambahData',
             data: {
