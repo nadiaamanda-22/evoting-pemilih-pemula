@@ -1,27 +1,19 @@
-require('dotenv').config();
-const appServer = require('express');
-const app = appServer();
-const port = process.env.PORT || 3000;
-const route = require('./config/routes');
+const express = require('express');
 const bodyParser = require('body-parser');
-const fileupload = require('express-fileupload');
-const path = require('path');
-const middleware = require('./config/middleware');
-const userAgent = require('express-useragent');
+const app = express();
+const port = process.env.PORT || 3000;
+const routes = require('./config/routes')
 
-app.use(userAgent.express());
-//app_middleware
-console.log(app)
-middleware.app(app);
-
-app.use(fileupload());
-app.use(appServer.static(path.join(__dirname, 'public')));
+app.use((req,res,next) =>{
+    res.setHeader('Access-Control-Allow-Origin','*');
+    res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,DELETE,OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers','Content-Type,Authorization');
+    next();
+})
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
-//app router
-route(app);
-
+routes(app);
 app.listen(port, () => {
     console.log('Staring Restful API on port ' + port);
 });

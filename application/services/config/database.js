@@ -1,10 +1,7 @@
-require('dotenv').config();
+// require('dotenv').config();
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize(
-    'db_pemilih_pemula',
-    'root',
-    '',
+const sequelize = new Sequelize('db_pemilih_pemula','root','',
     {
         host:'localhost',
         dialect:'mysql',
