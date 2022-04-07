@@ -20,9 +20,6 @@
                      <i class="fas fa-plus"></i> Tambah Data
                   </button>
 
-                  <!-- tombol asli -->
-                  <!-- <a href="" class="btn btn-gradient mb-3 warnaprimer" data-toggle="modal" data-target="#addKandidat"><i class="fas fa-plus"></i> Tambah Data</a> -->
-
                   <table class="table table-striped" id="tableKandidat">
                      <thead>
                         <tr>
