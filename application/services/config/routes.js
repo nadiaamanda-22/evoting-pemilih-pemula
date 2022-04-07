@@ -8,11 +8,11 @@ const { json } = require('express/lib/response');
 const apiVersion = ('API_VERSION', 1);
 
 module.exports = function (app) {
-    app.route('/v' + apiVersion+ '/role').get(Role.getAll);
-    app.route('/v' + apiVersion+ '/role/:id_role').get(Role.getId);
-    app.route('/v' + apiVersion+ '/role').post(Role.Post);
-    app.route('/v' + apiVersion+ '/role/:id_role').put(Role.Put);
-    app.route('/v' + apiVersion+ '/role/:id_role').delete(Role.Delete);
+    app.route('/v' + apiVersion + '/role').get(Role.getAll);
+    app.route('/v' + apiVersion + '/role/:id_role').get(Role.getId);
+    app.route('/v' + apiVersion + '/role').post(Role.Post);
+    app.route('/v' + apiVersion + '/role/:id_role').put(Role.Put);
+    app.route('/v' + apiVersion + '/role/:id_role').delete(Role.Delete);
 
     app.route('/v' + apiVersion+ '/kandidat').get(Kandidat.getAll);
     app.route('/v' + apiVersion+ '/kandidat/:id_kandidat').get(Kandidat.getId);

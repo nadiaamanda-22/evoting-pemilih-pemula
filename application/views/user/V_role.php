@@ -15,13 +15,10 @@
             <div class="row">
                <div class="col-xl">
 
-                  <!-- tombol sementara -->
+                  <!-- tambah data -->
                   <button type="button" class="btn btn-gradient warnaprimer" data-bs-toggle="modal" data-bs-target="#addRole" style="margin-bottom:20px;">
                      <i class="fas fa-plus"></i> Tambah Data
                   </button>
-
-                  <!-- tombol asli -->
-                  <!-- <a href="" class="btn btn-gradient mb-3 warnaprimer" data-toggle="modal" data-target="#addRole"><i class="fas fa-plus"></i> Tambah Data</a> -->
 
                   <table class="table table-striped" id="tableRole">
                      <thead>
@@ -60,7 +57,7 @@
                         <div class="form-group" style="margin-bottom: 20px;">
                            <label class="col-lg-4 col-sm-4 control-label">Role</label>
                            <div class="col-md-12">
-                              <!-- <input type="hidden" class="form-control" id="id_role"> -->
+                              <input type="hidden" class="form-control" id="id_role">
                               <input type="text" class="form-control" id="role" name="role" placeholder="Masukkan Role">
                            </div>
                         </div>
@@ -80,33 +77,33 @@
    <!-- main content -->
 
    <!-- Modal edit -->
-   <!-- <div class="modal fade" id="editRole" tabindex="-1" aria-labelledby="editRoleLabel" aria-hidden="true">
+   <div class="modal fade" id="ubahRole" tabindex="-1" aria-labelledby="ubahRoleLabel" aria-hidden="true">
       <div class="modal-dialog">
          <div class="modal-content">
             <div class="modal-header">
-               <h5 class="modal-title" id="editRoleLabel">Ubah Data</h5>
+               <h5 class="modal-title" id="ubahRoleLabel">Ubah Data</h5>
                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-               <form action="<?= base_url('role/editRole'); ?>" method="post">
+               <form action="" method="post">
                   <div class="modal-body">
 
                      <div class="form-group" style="margin-bottom: 20px;">
                         <label class="col-lg-4 col-sm-4 control-label">Role</label>
                         <div class="col-md-12">
-                           <input type="hidden" class="form-control">
-                           <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan Role">
+                           <input type="hidden" class="form-control" id="idrole" name="id_role">
+                           <input type="text" class="form-control" id="namarole" name="role">
                         </div>
                      </div>
                </form>
                <div class="modal-footer">
-                  <button type="button" class="btn btn-gradient warnaprimer">Simpan</button>
+                  <button type="button" class="btn btn-gradient warnaprimer" id="ButtonEdit">Simpan</button>
                   <button type="button" class="btn btn-gradient warnacancel" data-bs-dismiss="modal">Batal</button>
                </div>
             </div>
          </div>
       </div>
-   </div> -->
+   </div>
    <!-- Akhir modal edit-->
 
    <script>
@@ -115,7 +112,7 @@
          TblRole.ajax.reload();
       }
 
-      //datatable
+      //nampilin datatable
       $(document).ready(function() {
 
          var table = $('#tableRole');
@@ -123,7 +120,7 @@
          TblRole = table.DataTable({
 
             ajax: {
-               url: base + "Role/ngambilData",
+               url: base + "Role/ngambilRole",
                type: "POST",
                dataSrc: "",
                dataType: "json",
@@ -144,21 +141,20 @@
                },
                {
                   render: function(full, type, data, meta) {
-                     return `<button  class="btn btn-sm warnaprimer" data-bs-toggle="modal" data-bs-target="#editRole" onclick='edit(${data.id_barang})'>Edit</button>
-                			<button type="button" class="btn btn-sm warnadanger" onclick='hapus(${data.id_barang})'>Hapus</button>`;
+                     return `<button  class="btn btn-sm warnaprimer" data-bs-toggle="modal" data-bs-target="#editRole" onclick='getIdRole(${data.id_role})'><i class="far fa-edit"></i></button>
+                			<button type="button" class="btn btn-sm warnadanger" onclick='ButtonHapus(${data.id_role})'><i class="far fa-trash-alt"></button>`;
                   }
                }
             ]
          });
       });
 
-      // tambah
+      // tambah data
       function ButtonTambah() {
          let id_role = $('#id_role').val();
          let role = $('#role').val();
-         console.log(role);
          $.ajax({
-            url: base + 'Role/tambahData',
+            url: base + 'Role/tambahRole',
             data: {
                id_role: id_role,
                role: role
@@ -167,8 +163,69 @@
             type: 'POST',
             cache: false,
             success: function(response) {
+               reloadTable();
+               $('#addRole').modal('hide');
                alert("Data berhasil ditambah");
             }
          })
       }
+
+
+      //hapus data
+      function ButtonHapus(id_role) {
+         $.ajax({
+            url: base + 'Role/hapusRole/' + id_role,
+            type: 'POST',
+            data: {
+               id_role: id_role
+            },
+            dataType: 'json',
+            success: function(response) {
+               reloadTable();
+               alert("Data berhasil dihapus");
+            }
+         })
+      }
+
+
+      //get data perid
+      function getIdRole(id_role) {
+         $.ajax({
+            url: base + 'Role/getIdRole/' + id_role,
+            type: 'GET',
+            dataType: 'json',
+            cache: false,
+            success: function(data) {
+               $('#idrole').val(data.id_role);
+               $('#namarole').val(data.role);
+               $('#ubahRole').modal('show');
+               console.log(data.id_role)
+            }
+         })
+      }
+
+
+      //edit data
+      $('#ButtonEdit').click(function(e) {
+         e.preventDefault()
+         let idRole = $('#idrole').val();
+         let namaRole = $('#namarole').val();
+
+         $.ajax({
+            url: base + 'Role/editRole/' + idRole,
+            type: 'POST',
+            data: {
+               id_role: idRole,
+               role: namaRole
+            },
+            dataType: 'json',
+            cache: false,
+            success: function(response) {
+               $('#ubahRole').modal('hide');
+               alert("Data berhasil diubah");
+               reloadTable();
+               console.log(response);
+            }
+         })
+      })
    </script>
