@@ -1,4 +1,4 @@
-const apiMiddleware = require('../middleware/apiMiddleware');
+// const apiMiddleware = require('../middleware/apiMiddleware');
 const response = require('../helpers/response-parser');
 
 const middleware = {
@@ -13,24 +13,24 @@ const middleware = {
 
     router:(route)=>{
         route.use((req,res,next) => {
-            apiMiddleware.auth(req).then((result) => {
-                if(result != null && result.is_authenticated){
-                    next();
-                }else{
-                    response.error(res,
-                        {
-                            status: 401,
-                            error: 'Unauthorized'
-                        });
-                        return
-                }
-            }).catch((err) => {
-                response.error(res,
-                    {
-                        status: 401,
-                        error: err
-                    });
-            });
+        //     apiMiddleware.auth(req).then((result) => {
+        //         if(result != null && result.is_authenticated){
+        //             next();
+        //         }else{
+        //             response.error(res,
+        //                 {
+        //                     status: 401,
+        //                     error: 'Unauthorized'
+        //                 });
+        //                 return
+        //         }
+        //     }).catch((err) => {
+        //         response.error(res,
+        //             {
+        //                 status: 401,
+        //                 error: err
+        //             });
+        //     });
         });
     }
 }
