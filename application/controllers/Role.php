@@ -111,7 +111,6 @@ class Role extends CI_Controller
 
    public function editRole($idRole)
    {
-      // $id_role = $this->input->post('idrole');
       $role =  $this->input->post('role');
 
       $ch = curl_init();
@@ -121,8 +120,6 @@ class Role extends CI_Controller
          'role' => $role
       ];
       $data = json_encode($postapi);
-      // var_dump($idRole);
-      // die;
 
       curl_setopt($ch, CURLOPT_URL, $url);
       curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
@@ -131,9 +128,6 @@ class Role extends CI_Controller
       curl_setopt($ch, CURLOPT_POST, true);
       curl_setopt($ch, CURLOPT_HTTPHEADER,  array('Content-Type:application/json', 'Content-Length: ' . strlen($data)));
       curl_setopt($ch, CURLOPT_HEADER, 1);
-      // curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36');
-      // curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-      // curl_setopt($ch, CURLOPT_TIMEOUT, 120);
       curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
       curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0);
       curl_setopt($ch, CURLOPT_TIMEOUT, 1800);
