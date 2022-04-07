@@ -91,7 +91,7 @@
                      <div class="form-group" style="margin-bottom: 20px;">
                         <label class="col-lg-4 col-sm-4 control-label">Role</label>
                         <div class="col-md-12">
-                           <input type="hidden" class="form-control" id="id_role">
+                           <input type="text" class="form-control" id="idrole" name="id_role">
                            <input type="text" class="form-control" id="namarole" name="role">
                         </div>
                      </div>
@@ -190,16 +190,17 @@
 
       //get data perid
       function getIdRole(id_role) {
+         // let id = $('#idrole').val(data.id_role);
          $.ajax({
             url: base + 'Role/getIdRole/' + id_role,
             type: 'GET',
             dataType: 'json',
             cache: false,
             success: function(data) {
-               $('#id_role').val(data.id_role);
+               $('#idrole').val(data.id_role);
                $('#namarole').val(data.role);
                $('#ubahRole').modal('show');
-               console.log(data)
+               console.log(data.id_role)
             }
          })
       }
@@ -208,11 +209,11 @@
       //edit data
       $('#ButtonEdit').click(function(e) {
          e.preventDefault()
-         let idRole = $('#id_role').val();
+         let idRole = $('#idrole').val();
          let namaRole = $('#namarole').val();
 
          $.ajax({
-            url: base + 'Role/editRole',
+            url: base + 'Role/editRole/' + idRole,
             type: 'POST',
             data: {
                id_role: idRole,
