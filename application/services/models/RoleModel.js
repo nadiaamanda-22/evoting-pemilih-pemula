@@ -10,6 +10,15 @@ RoleModel.init({
     },
     role: {
         type: Sequelize.CHAR
+    },
+    create_at: {
+        type: Sequelize.DATE
+    },
+    update_at: {
+        type: Sequelize.DATE
+    },
+    delete_at: {
+        type: Sequelize.DATE
     }
 }, {
     defaultScope: { 
