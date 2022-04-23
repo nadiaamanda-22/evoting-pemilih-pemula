@@ -9,7 +9,7 @@ class Role extends CI_Controller
    public function __construct()
    {
       parent::__construct();
-      $this->api = "http://localhost:3000/v1/role";
+      $this->api = "http://localhost:3000/v1/role/";
    }
 
    public function index()
@@ -28,37 +28,48 @@ class Role extends CI_Controller
 
    public function tambahRole()
    {
+
       $role =  $this->input->post('role');
 
-      $ch = curl_init();
-      $url = "http://localhost:3000/v1/role";
-      $postapi = [
-         'role' => $role
-      ];
-      $data = json_encode($postapi);
+      $this->form_validation->set_rules('role', 'Role', 'required');
+
+      if ($this->form_validation->run() == FALSE) {
+         $response = [
+            'sukses' => FALSE,
+            'alert' => 'Data gagal ditambahkan'
+         ];
+         echo json_encode($response);
+      } else {
+         $ch = curl_init();
+         $url = "http://localhost:3000/v1/role/insert";
+         $postapi = [
+            'role' => $role
+         ];
+         $data = json_encode($postapi);
 
 
-      curl_setopt($ch, CURLOPT_URL, $url);
-      // curl_setopt($ch, CURLOPT_POST, $data);
-      curl_setopt($ch, CURLOPT_HTTPHEADER,  array('Content-Type:application/json', 'Content-Length: ' . strlen($data)));
-      curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-      curl_setopt($ch, CURLOPT_HEADER, 1);
-      // curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36');
-      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-      // curl_setopt($ch, CURLOPT_TIMEOUT, 120);
-      curl_setopt($ch, CURLOPT_POST, true);
-      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-      curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0);
-      curl_setopt($ch, CURLOPT_TIMEOUT, 1800);
-      $result = curl_exec($ch);
-      curl_close($ch);
+         curl_setopt($ch, CURLOPT_URL, $url);
+         // curl_setopt($ch, CURLOPT_POST, $data);
+         curl_setopt($ch, CURLOPT_HTTPHEADER,  array('Content-Type:application/json', 'Content-Length: ' . strlen($data)));
+         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+         curl_setopt($ch, CURLOPT_HEADER, 1);
+         // curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36');
+         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+         // curl_setopt($ch, CURLOPT_TIMEOUT, 120);
+         curl_setopt($ch, CURLOPT_POST, true);
+         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0);
+         curl_setopt($ch, CURLOPT_TIMEOUT, 1800);
+         $result = curl_exec($ch);
+         curl_close($ch);
 
-      $response = [
-         'sukses' => TRUE,
-         'alert' => 'Data Berhasil Ditambahkan'
-      ];
-      echo json_encode($response);
+         $response = [
+            'sukses' => TRUE,
+            'alert' => 'Data berhasil ditambahkan'
+         ];
+         echo json_encode($response);
+      }
    }
 
    public function hapusRole($id_role)
@@ -66,7 +77,7 @@ class Role extends CI_Controller
       $id_role =  $this->input->post('id_role');
 
       $ch = curl_init();
-      $url = "http://localhost:3000/v1/role/" . $id_role;
+      $url = "http://localhost:3000/v1/role/hard_delete/" . $id_role;
       $postapi = [
          'id_role' => $id_role
       ];
@@ -92,7 +103,7 @@ class Role extends CI_Controller
 
       $response = [
          'sukses' => TRUE,
-         'alert' => 'Data Berhasil Dihapus'
+         'alert' => 'Data berhasil dihapus'
       ];
       echo json_encode($response);
    }
@@ -104,40 +115,48 @@ class Role extends CI_Controller
       $decode = json_decode($api, true);
       $getid = $decode['data'];
 
-      foreach ($getid as $data) {
-      }
-      echo json_encode($data);
+      echo json_encode($getid);
    }
 
    public function editRole($idRole)
    {
       $role =  $this->input->post('role');
 
-      $ch = curl_init();
-      $url = "http://localhost:3000/v1/role/" . $idRole;
-      $postapi = [
-         'id_role' => $idRole,
-         'role' => $role
-      ];
-      $data = json_encode($postapi);
+      $this->form_validation->set_rules('role', 'Role', 'required');
 
-      curl_setopt($ch, CURLOPT_URL, $url);
-      curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
-      curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-      curl_setopt($ch, CURLOPT_POST, true);
-      curl_setopt($ch, CURLOPT_HTTPHEADER,  array('Content-Type:application/json', 'Content-Length: ' . strlen($data)));
-      curl_setopt($ch, CURLOPT_HEADER, 1);
-      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-      curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0);
-      curl_setopt($ch, CURLOPT_TIMEOUT, 1800);
-      $result = curl_exec($ch);
-      curl_close($ch);
+      if ($this->form_validation->run() == FALSE) {
+         $response = [
+            'sukses' => FALSE,
+            'alert' => 'Data gagal diubah'
+         ];
+         echo json_encode($response);
+      } else {
+         $ch = curl_init();
+         $url = "http://localhost:3000/v1/role/update/" . $idRole;
+         $postapi = [
+            'id_role' => $idRole,
+            'role' => $role
+         ];
+         $data = json_encode($postapi);
 
-      $response = [
-         'sukses' => TRUE,
-         'alert' => 'Data Berhasil Diubah'
-      ];
-      echo json_encode($response);
+         curl_setopt($ch, CURLOPT_URL, $url);
+         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
+         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+         curl_setopt($ch, CURLOPT_POST, true);
+         curl_setopt($ch, CURLOPT_HTTPHEADER,  array('Content-Type:application/json', 'Content-Length: ' . strlen($data)));
+         curl_setopt($ch, CURLOPT_HEADER, 1);
+         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0);
+         curl_setopt($ch, CURLOPT_TIMEOUT, 1800);
+         $result = curl_exec($ch);
+         curl_close($ch);
+
+         $response = [
+            'sukses' => TRUE,
+            'alert' => 'Data berhasil diubah'
+         ];
+         echo json_encode($response);
+      }
    }
 }

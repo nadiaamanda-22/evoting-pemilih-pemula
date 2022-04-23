@@ -2,6 +2,12 @@
       <div class="page-content">
          <div class="container-fluid">
 
+
+            <?php if (validation_errors()) : ?>
+               <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
+            <?php else : ?>
+            <?php endif; ?>
+
             <!-- judul halaman -->
             <div class="row">
                <div class="col-12">
@@ -19,59 +25,61 @@
                   <button type="button" class="btn btn-gradient warnaprimer" data-bs-toggle="modal" data-bs-target="#addRole" style="margin-bottom:20px;">
                      <i class="fas fa-plus"></i> Tambah Data
                   </button>
-
-                  <table class="table table-striped" id="tableRole">
-                     <thead>
-                        <tr>
-                           <th scope="col">No</th>
-                           <th scope="col">Role</th>
-                           <th scope="col">Aksi</th>
-                        </tr>
-                     </thead>
-                     <tbody>
-                     </tbody>
-                  </table>
                </div>
-
             </div>
-            <!-- end row -->
 
+            <table class="table table-striped" id="tableRole">
+               <thead>
+                  <tr>
+                     <th scope="col">No</th>
+                     <th scope="col">Role</th>
+                     <th scope="col">Aksi</th>
+                  </tr>
+               </thead>
+               <tbody>
+               </tbody>
+            </table>
          </div>
-         <!-- container fluid -->
+
       </div>
-      <!-- page content -->
+      <!-- end row -->
+
+   </div>
+   <!-- container fluid -->
+   </div>
+   <!-- page content -->
 
 
-      <!-- Modal Tambah  -->
-      <div class="modal fade" id="addRole" tabindex="-1" aria-labelledby="addRoleLabel" aria-hidden="true">
-         <div class="modal-dialog">
-            <div class="modal-content">
-               <div class="modal-header">
-                  <h5 class="modal-title" id="addRoleLabel">Tambah Data</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-               </div>
-               <div class="modal-body">
-                  <form action="<?= base_url('role/addRole'); ?>" method="post">
-                     <div class="modal-body">
+   <!-- Modal Tambah  -->
+   <div class="modal fade" id="addRole" tabindex="-1" aria-labelledby="addRoleLabel" aria-hidden="true">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="addRoleLabel">Tambah Data</h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+               <form action="<?= base_url('role/addRole'); ?>" method="post">
+                  <div class="modal-body">
 
-                        <div class="form-group" style="margin-bottom: 20px;">
-                           <label class="col-lg-4 col-sm-4 control-label">Role</label>
-                           <div class="col-md-12">
-                              <input type="hidden" class="form-control" id="id_role">
-                              <input type="text" class="form-control" id="role" name="role" placeholder="Masukkan Role">
-                           </div>
+                     <div class="form-group" style="margin-bottom: 20px;">
+                        <label class="col-lg-4 col-sm-4 control-label">Role</label>
+                        <div class="col-md-12">
+                           <input type="hidden" class="form-control" id="id_role">
+                           <input type="text" class="form-control" id="role" name="role" placeholder="Masukkan Role">
                         </div>
+                     </div>
 
-                  </form>
-                  <div class="modal-footer">
-                     <button type="button" class="btn btn-gradient warnaprimer" id="tambah" onclick="ButtonTambah()">Simpan</button>
-                     <button type="button" class="btn btn-gradient warnacancel" data-bs-dismiss="modal">Batal</button>
-                  </div>
+               </form>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-gradient warnaprimer" id="tambah" onclick="ButtonTambah()">Simpan</button>
+                  <button type="button" class="btn btn-gradient warnacancel" data-bs-dismiss="modal">Batal</button>
                </div>
             </div>
          </div>
       </div>
-      <!-- Akhir modal tambah -->
+   </div>
+   <!-- Akhir modal tambah -->
 
    </div>
    <!-- main content -->
@@ -163,9 +171,21 @@
             type: 'POST',
             cache: false,
             success: function(response) {
+               if (response.sukses == false) {
+                  Swal.fire({
+                     icon: 'error',
+                     // title: 'Oops...',
+                     text: response.alert,
+                  })
+               } else {
+                  Swal.fire({
+                     icon: 'success',
+                     // title: 'Yeayy',
+                     text: response.alert
+                  })
+               }
                reloadTable();
                $('#addRole').modal('hide');
-               alert("Data berhasil ditambah");
             }
          })
       }
@@ -173,16 +193,36 @@
 
       //hapus data
       function ButtonHapus(id_role) {
-         $.ajax({
-            url: base + 'Role/hapusRole/' + id_role,
-            type: 'POST',
-            data: {
-               id_role: id_role
-            },
-            dataType: 'json',
-            success: function(response) {
-               reloadTable();
-               alert("Data berhasil dihapus");
+         Swal.fire({
+            title: 'Hapus data ?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Iya',
+            cancelButtonText: 'Batal',
+            closeOnConfirm: false,
+            closeOnCancel: false
+         }).then((result) => {
+            if (result.isConfirmed) {
+
+               $.ajax({
+                  url: base + 'Role/hapusRole/' + id_role,
+                  type: 'POST',
+                  data: {
+                     id_role: id_role
+                  },
+                  dataType: 'json',
+                  success: function(response) {
+                     Swal.fire({
+                        icon: 'success',
+                        // title: 'Oops...',
+                        text: response.alert,
+                     })
+                     reloadTable();
+                  }
+               })
+
             }
          })
       }
@@ -221,10 +261,19 @@
             dataType: 'json',
             cache: false,
             success: function(response) {
-               $('#ubahRole').modal('hide');
-               alert("Data berhasil diubah");
+               if (response.sukses == false) {
+                  Swal.fire({
+                     icon: 'error',
+                     text: response.alert,
+                  })
+               } else {
+                  Swal.fire({
+                     icon: 'success',
+                     text: response.alert
+                  })
+               }
                reloadTable();
-               console.log(response);
+               $('#ubahRole').modal('hide');
             }
          })
       })
