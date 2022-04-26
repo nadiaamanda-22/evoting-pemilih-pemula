@@ -98,7 +98,7 @@
 
                                             <!-- tombol cetak -->
                                             <div class="col-lg-4" style="margin-left: -23px;">
-                                               <a href="" class="btn btn-gradient mb-3 warnaprimer" target="_blank"><i class="fas fa-file-export"></i> Cetak Laporan</a>
+                                               <a href="<?= base_url('Formlaporan/cetakCSatu') ?>" class="btn btn-gradient mb-3 warnaprimer" target="_blank"><i class="fas fa-file-export"></i> Cetak Laporan</a>
                                             </div>
 
                                             <!-- tombol Upload -->
@@ -136,7 +136,7 @@
 
                                             <!-- tombol cetak -->
                                             <div class="col-lg-4" style="margin-left: -23px;">
-                                               <a href="" class="btn btn-gradient mb-3 warnaprimer" target="_blank"><i class="fas fa-file-export"></i> Cetak Laporan</a>
+                                               <a href="<?= base_url('Formlaporan/cetakCLima') ?>" class="btn btn-gradient mb-3 warnaprimer" target="_blank"><i class="fas fa-file-export"></i> Cetak Laporan</a>
                                             </div>
 
                                             <!-- tombol Upload -->
