@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
     },
     filename: function(req, file, cb){
         const originalname = file.originalname;
-        cb(null, file.originalname)
+        cb(null, Date.now() + '-' + file.originalname)
     }
 });
 
@@ -140,15 +140,18 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// router.post('/insert',upload.fields([{name:"foto",maxCount:1}]), (req, res) => {
-//     console.log(req.files,req.body);
-router.post('/insert', (req, res) => {
+router.post('/insert',upload.fields([{name:"foto_kandidat",maxCount:1}]), (req, res) => {
+    console.log(req.files,req.body);
+    const a = console.log(foto_kandidat[6]);
+// router.post('/insert', (req, res) => {
     let modelAttr = KandidatModel.rawAttributes;
     let inputs = {};
     Object.values(modelAttr).forEach((val) => {  
         if (req.body[val.field] != null) {
             inputs[val.fieldName] = req.body[val.field];
-        }  
+        } else if(req.files == true) {
+            inputs[val.fieldName] = req.files[0];
+        }
     });
 
     KandidatModel.create(inputs).then(data => {
@@ -201,104 +204,5 @@ router.delete('/hard_delete/:id', (req, res) => {
         response.error(res, { error: err.message });
     });
 });
-
-// RoleController.getAll = async function (req, res) {
-//     try {
-//         let role = await RoleModel.findAll()
-//             if (role.length > 0) {
-//                 res.status(200).json({
-//                     message: 'Ada Data Role',
-//                     data: role
-//                 })                
-//             }else{
-//                 res.status(200).json({
-//                     message: 'Tidak Ada Data Role'
-//                 })
-//             }
-//         }
-//         catch(error){
-//         res.status(404).json({
-//             message:error
-//         })
-//     }
-// }
-
-// RoleController.getId = async function (req, res){
-//     try {
-//         let role = await RoleModel.findAll({
-//             where: {
-//                 id_kandidat: req.params.id_kandidat
-//             }
-//         })
-//         if (role.length > 0) {
-//             res.status(200).json({
-//                 message: 'Ada Data Role',
-//                 data: role
-//             })
-//         }else{
-//             res.status(200).json({
-//                 message: 'Tidak Ada Data Role',
-//                 data:[]
-//             })
-//             }
-//     } catch (error){
-//         res.status(400).json({
-//             message: error.message
-//         })
-//      }
-// }
-
-
-// RoleController.Post = async function (req, res){
-//     try {
-//         let role = await RoleModel.create({
-//             role: req.body.role,
-//         })
-//         res.status(201).json({
-//             message: 'Berhasil Tambah Data Role',
-//             data: role
-//         })
-//     } catch (error){
-//         res.status(404).json({
-//             message: error.message
-//         })
-//     }
-// }
-
-// RoleController.Put = async function (req, res){
-//     try{
-//         let role = await RoleModel.update({
-//             role: req.body.role
-//         },{
-//             where : {
-//                 id_kandidat : req.params.id_kandidat
-//             }
-//         })
-//         res.status(200).json({
-//             message: 'Berhasil Ubah Data Role'
-//         })
-//     } catch(error){
-//         res.status(404).json({
-//             message: error.message
-//         })
-//     }
-// }
-
-// RoleController.Delete = async function (req, res){
-//     try{
-//         let role = await RoleModel.destroy({
-//             where: {
-//                 id_kandidat: req.params.id_kandidat
-//             }
-//         })
-//         res.status(200).json({
-//             message: 'Berhasil Hapus Data Role'
-//         })
-//     }catch(error){
-//         res.status(404).json({
-//             message: error.message
-//         })
-//     }
-// }
 
 module.exports = router;
