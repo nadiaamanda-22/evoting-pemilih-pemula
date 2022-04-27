@@ -4,12 +4,12 @@
 <head>
 
    <meta charset="utf-8" />
-   <title>E-Voting</title>
+   <title>Log in</title>
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
    <meta content="Themesbrand" name="author" />
    <!-- App favicon -->
-   <link rel="icon" type="image/png" sizes="50x26" href="<?= base_url('assets/gambar/logovoting.png'); ?>">
+   <link rel="icon" type="image/png" sizes="50x26" href="<?= base_url('assets/gambar/logokpu.png'); ?>">
 
    <!-- Bootstrap Css -->
    <link href="<?= base_url('assets/css/bootstrap.min.css') ?>" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -21,87 +21,151 @@
    <!-- my css -->
    <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
 
+   <style>
+      body {
+         font-family: 'Poppins';
+         background-repeat: no-repeat;
+         background-size: cover;
+         background-color: #c77134;
+         /* background-image: url('assets/gambar/bg.jpg'); */
+      }
+
+      .container-fluid {
+         display: flex;
+         width: 100%;
+         height: 680px;
+      }
+
+      .kotaklogin {
+         margin: auto !important;
+         width: 500px;
+         height: 550px;
+         background-color: rgba(255, 255, 255, 0.925);
+         border-radius: 30px;
+      }
+
+      .login {
+         margin: auto;
+      }
+
+      .login h5 {
+         margin-top: 30px !important;
+         font-size: 24px;
+         color: #d67d3e;
+      }
+
+      .login hr {
+         width: 50%;
+         margin: auto;
+         height: 1px;
+         background-color: #d67d3e;
+         opacity: 100%;
+      }
+
+      .inputlogin label {
+         font-size: 16px;
+      }
+
+      .submit button {
+         margin-top: 15px;
+         font-size: 15px;
+         border-radius: 20px;
+         width: 120px;
+         height: 40px;
+         background-color: #d67d3e;
+         border: none;
+         color: white;
+      }
+
+
+      .inputlogin input {
+         width: 350px;
+         font-size: 13px;
+         font-weight: 300;
+
+      }
+
+      .inputlogin .form-control:focus {
+         color: none;
+         background-color: none !important;
+         border-color: #d67d3e;
+         outline: 0;
+         box-shadow: none;
+
+      }
+
+      .inputlogin .password {
+         margin-top: 25px !important;
+
+      }
+
+      .inputlogin {
+         display: flex;
+      }
+
+      form {
+         margin: auto;
+      }
+
+      .inputlogin .form-label {
+         font-family: 'Poppins';
+         font-weight: 500;
+         color: grey;
+      }
+
+      .forgot a {
+         color: grey;
+         font-size: 14px;
+      }
+
+      .forgot {
+         margin-top: 25px;
+      }
+   </style>
+
 </head>
 
 <body>
-   <div class="account-pages my-5 pt-sm-5">
-      <div class="container">
-         <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-6 col-xl-5">
-               <div class="cardlogin overflow-hidden shadow mb-5 bg-body rounded">
-                  <div class="warnaprimer">
-                     <div class="row">
-                        <div class="col-7">
-                           <div class="warnafont p-4">
-                              <h5 class="warnafont">E-Voting</h5>
-                              <p>Masuk ke E-Voting</p>
-                           </div>
-                        </div>
-                        <!-- <div class="col-5 align-self-end">
-                           <img src="assets/images/profile-img.png" alt="" class="img-fluid">
-                        </div> -->
+
+   <!-- <script src="<?= base_url('assets/backend/') ?>vendor/jquery/jquery.min.js"></script> -->
+   <!-- login -->
+   <section id="login">
+      <div class="container-fluid">
+         <div class="kotaklogin shadow">
+            <div class="row">
+               <div class="col-sm-12">
+                  <div class="login">
+                     <div class="text-center">
+                        <img src="<?= base_url('assets/gambar/logokpu.png') ?>" width="75" class="rounded mt-5" alt="...">
+                        <img src="<?= base_url('assets/gambar/logouika.png') ?>" width="75" class="rounded mt-5">
                      </div>
-                  </div>
-                  <div class="card-body pt-0">
-                     <div class="auth-logo">
-                        <div class="avatar-md profile-user-wid mb-4">
-                           <span class="avatar-title rounded-circle bg-gradient warnaputih">
-                              <img src="<?= base_url('assets/gambar/logovoting.png') ?>" class="rounded-circle" height="50">
-                           </span>
-                        </div>
-                     </div>
-                     <div class="p-2">
-                        <form class="form-horizontal" action="https://themesbrand.com/skote/layouts/index.html">
-
-                           <div class="mb-3">
-                              <label for="username" class="form-label">Username</label>
-                              <input type="text" class="form-control" id="username" placeholder="Masukkan Username">
+                     <h5 class="text-center lh-sm">E-Voting</h5>
+                     <hr>
+                     <div class="inputlogin mt-5">
+                        <form id="formlogin" method="POST" action="<?= base_url('Login') ?>">
+                           <div class="mb-3 NPM">
+                              <label for="npm" class="form-label">Username</label>
+                              <input type="text" class=" form-control" name="username" id="username" placeholder="Masukkan username">
+                           </div>
+                           <div class="mb-3 password">
+                              <label for="password" class="form-label">Password</label>
+                              <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan password">
+                           </div>
+                           <div class="submit text-center">
+                              <button type="submit" class="btnmasuk">Log In</button>
                            </div>
 
-                           <div class="mb-3">
-                              <label class="form-label">Password</label>
-                              <div class="input-group auth-pass-inputgroup">
-                                 <input type="password" class="form-control" placeholder="Enter password" aria-label="Masukkan Password" aria-describedby="password-addon">
-                                 <button class="btn btn-light " type="button" id="password-addon"><i class="mdi mdi-eye-outline"></i></button>
-                              </div>
-                           </div>
-
-                           <!-- <div class="form-check">
-                              <input class="form-check-input" type="checkbox" id="remember-check">
-                              <label class="form-check-label" for="remember-check">
-                                 Remember me
-                              </label>
-                           </div> -->
-
-                           <div class="mt-5 d-grid">
-                              <button class="btn btn-gradient waves-effect waves-light warnaprimer" type="submit">Log
-                                 In</button>
-                           </div>
-
-                           <!-- <div class="mt-4 text-center">
-                              <a href="auth-recoverpw.html" class="text-muted"><i class="mdi mdi-lock me-1"></i> Forgot your password?</a>
-                           </div> -->
                         </form>
                      </div>
-
                   </div>
                </div>
-
             </div>
          </div>
-      </div>
-   </div>
-   <!-- end account-pages -->
+   </section>
+   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-   <!-- JAVASCRIPT -->
-   <script src="<?= base_url('assets/libs/jquery/jquery.min.js') ?>"></script>
-   <script src="<?= base_url('assets/libs/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
-   <script src="<?= base_url('assets/libs/metismenu/metisMenu.min.js') ?>"></script>
-   <script src="<?= base_url('assets/libs/simplebar/simplebar.min.js') ?>"></script>
-   <script src="<?= base_url('assets/libs/node-waves/waves.min.js') ?>"></script>
 
-   <!-- App js -->
-   <script src="<?= base_url('') ?>assets/js/app.js"></script>
+
 </body>
 
 </html>

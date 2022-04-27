@@ -19,9 +19,8 @@
                   </div>
                   <div class="col-md-8">
                      <div class="card-body">
-                        <h5 class="card-title">Nama : Admin Instansi</h5>
-                        <p class="card-text">Username : admin123</p>
-                        <button type="button" class="btn btn-gradient warnaprimer" data-bs-toggle="modal" data-bs-target="#editAkun"><i class="far fa-edit"></i> Ubah</button>
+                        <h5 class="card-title" style="margin-top: 30px; font-size:20px;">AdminInstansi</h5>
+                        <button type="button" class="btn btn-gradient warnaprimer" data-bs-toggle="modal" data-bs-target="#editAkun" style="margin-top: 10px;"><i class="far fa-edit"></i> Ubah</button>
                      </div>
                   </div>
                </div>
@@ -44,17 +43,9 @@
                         <div class="modal-body">
 
                            <div class="form-group" style="margin-bottom: 20px;">
-                              <label class="col-lg-4 col-sm-4 control-label">Fullname</label>
-                              <div class="col-md-12">
-                                 <input type="hidden" class="form-control">
-                                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Admin Instansi">
-                              </div>
-                           </div>
-
-                           <div class="form-group" style="margin-bottom: 20px;">
                               <label class="col-lg-6 col-sm-4 control-label">Username</label>
                               <div class="col-md-12">
-                                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="admin123">
+                                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="AdminInstansi" disabled>
                               </div>
                            </div>
 
@@ -66,9 +57,12 @@
                            </div>
 
                            <div class="form-group" style="margin-bottom: 20px;">
-                              <label class="col-lg-4 col-sm-4 control-label">Foto Profil</label>
+                              <label class="col-lg-6 col-sm-4 control-label">Foto Profil</label>
                               <div class="col-md-12">
-                                 <input class="form-control" type="file" id="formFile">
+                                 <div class="custom-file">
+                                    <label class="custom-file-label" for="formFile">Pilih File</label>
+                                    <input class="custom-file-input" type="file" id="formFile">
+                                 </div>
                               </div>
                            </div>
 

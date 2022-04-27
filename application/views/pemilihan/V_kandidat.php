@@ -15,10 +15,30 @@
             <div class="row">
                <div class="col-xl">
 
-                  <!-- tombol sementara -->
-                  <button type="button" class="btn btn-gradient warnaprimer" data-bs-toggle="modal" data-bs-target="#addKandidat" style="margin-bottom:20px;">
-                     <i class="fas fa-plus"></i> Tambah Data
-                  </button>
+                  <div class="row" style="width: 340px;">
+                     <div class="col-lg-6">
+                        <!-- tombol tambah -->
+                        <button type="button" class="btn btn-gradient warnaprimer" data-bs-toggle="modal" data-bs-target="#addKandidat" style="margin-bottom:20px;">
+                           <i class="fas fa-plus"></i> Tambah Data
+                        </button>
+                     </div>
+
+                     <div class="col-lg-6">
+                        <!-- tombol export -->
+                        <div class="dropdown">
+                           <button class="btn btn-gradient dropdown-toggle warnaprimer" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                              <i class="fas fa-file-export"></i> Ekspor
+                           </button>
+                           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                              <li><a class="dropdown-item" href="#">PDF</a></li>
+                              <li><a class="dropdown-item" href="#">CSV</a></li>
+                              <li><a class="dropdown-item" href="#">XLXS</a></li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+
+
 
                   <table class="table table-striped" id="tableKandidat">
                      <thead>
@@ -37,11 +57,34 @@
                            <td>Ahmad</td>
                            <td><img src="<?= base_url('assets/gambar/pidato.jpg') ?>" width="100" height="100"></td>
                            <td>
-                              <!-- tombol sementara -->
+
                               <button type="button" class="btn btn-gradient warnaprimer" data-bs-toggle="modal" data-bs-target="#editKandidat"><i class="far fa-edit"></i></button>
 
-                              <!-- tombol aslinya -->
-                              <!-- <a href="<?= base_url('kandidat/editKandidat') ?>" class="btn btn-gradient warnaprimer" data-toggle="modal" data-target="#editJenisIns"><i class="far fa-edit"></i></a> -->
+                              <a href="#" class=" btn btn-gradient warnadanger"><i class="far fa-trash-alt"></i></a>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td scope="row">2</td>
+                           <td>Susi</td>
+                           <td>Ridwan</td>
+                           <td><img src="<?= base_url('assets/gambar/pidato.jpg') ?>" width="100" height="100"></td>
+                           <td>
+
+                              <button type="button" class="btn btn-gradient warnaprimer" data-bs-toggle="modal" data-bs-target="#editKandidat"><i class="far fa-edit"></i></button>
+
+                              <a href="#" class=" btn btn-gradient warnadanger"><i class="far fa-trash-alt"></i></a>
+                           </td>
+                        </tr>
+
+                        <tr>
+                           <td scope="row">3</td>
+                           <td>Himawan</td>
+                           <td>Reza</td>
+                           <td><img src="<?= base_url('assets/gambar/pidato.jpg') ?>" width="100" height="100"></td>
+                           <td>
+
+                              <button type="button" class="btn btn-gradient warnaprimer" data-bs-toggle="modal" data-bs-target="#editKandidat"><i class="far fa-edit"></i></button>
 
                               <a href="#" class=" btn btn-gradient warnadanger"><i class="far fa-trash-alt"></i></a>
                            </td>
@@ -93,9 +136,12 @@
                         </div>
 
                         <div class="form-group" style="margin-bottom: 20px;">
-                           <label class="col-lg-4 col-sm-4 control-label">Gambar Kandidat</label>
+                           <label class="col-lg-6 col-sm-4 control-label">Gambar Kandidat</label>
                            <div class="col-md-12">
-                              <input class="form-control" type="file" id="formFile">
+                              <div class="custom-file">
+                                 <label class="custom-file-label" for="formFile">Pilih File</label>
+                                 <input class="custom-file-input" type="file" id="formFile">
+                              </div>
                            </div>
                         </div>
 
@@ -142,9 +188,12 @@
                      </div>
 
                      <div class="form-group" style="margin-bottom: 20px;">
-                        <label class="col-lg-4 col-sm-4 control-label">Gambar Kandidat</label>
+                        <label class="col-lg-6 col-sm-4 control-label">Gambar Kandidat</label>
                         <div class="col-md-12">
-                           <input class="form-control" type="file" id="formFile">
+                           <div class="custom-file">
+                              <label class="custom-file-label" for="formFile">Pilih File</label>
+                              <input class="custom-file-input" type="file" id="formFile">
+                           </div>
                         </div>
                      </div>
 
