@@ -12,6 +12,10 @@ PemilihModel.init({
     nama_pemilih: {
         type: Sequelize.CHAR
     },
+    jk_pemilih: {
+        type: Sequelize.ENUM,
+        values:['Wanita','Pria']
+    },
     nama_ibu_kandung: {
         type: Sequelize.CHAR
     },

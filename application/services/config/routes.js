@@ -3,6 +3,7 @@ const appConst = require('../config/constant');
 
 module.exports = function (app) {
     app.use('/v' + appConst.apiVersion + '/role', require('../controller/RoleController'));
+    app.use('/v' + appConst.apiVersion + '/pemilih', require('../controller/PemilihController'));
     app.use('/v' + appConst.apiVersion + '/kandidat', require('../controller/KandidatController'));
     // app.route('/v' + apiVersion + '/role/:id_role').get(Role.getId);
     // app.route('/v' + apiVersion + '/role').post(Role.Post);
