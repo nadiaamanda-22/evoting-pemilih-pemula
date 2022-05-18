@@ -116,16 +116,9 @@
                               </div>
 
                               <div class="form-group" style="margin-bottom: 20px;">
-                                 <label for="example-datetime-local-input" class="col-lg-4 col-sm-4 col-form-label">Waktu Awal</label>
+                                 <label for="example-datetime-local-input" class="col-lg-6 col-sm-4 col-form-label">Waktu Pemilihan</label>
                                  <div class="col-md-12">
-                                    <input class="form-control" type="datetime-local" value="2022-10-23T09:00:00" id="example-datetime-local-input">
-                                 </div>
-                              </div>
-
-                              <div class="form-group" style="margin-bottom: 20px;">
-                                 <label for="example-datetime-local-input" class="col-lg-4 col-sm-4 col-form-label">Waktu Akhir</label>
-                                 <div class="col-md-12">
-                                    <input class="form-control" type="datetime-local" value="2022-10-23T13:30:00" id="example-datetime-local-input">
+                                    <input class="form-control" name="datetimes" value="2022-10-23T09:00:00" id="example-datetime-local-input">
                                  </div>
                               </div>
                         </form>

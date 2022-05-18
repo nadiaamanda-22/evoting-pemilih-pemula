@@ -35,17 +35,17 @@
                        <div class="row">
                           <div class="col">
                              <h5>111</h5>
-                             <h6>Ahmad - Muhammad</h6>
+                             <h6>Ketua - Wakil</h6>
                           </div>
 
                           <div class="col">
                              <h5>121</h5>
-                             <h6>Habibi - Ainun</h6>
+                             <h6>Ketua - Wakil</h6>
                           </div>
 
                           <div class="col">
                              <h5>400</h5>
-                             <h6>Romeo - Moreo</h6>
+                             <h6>Ketua - Wakil</h6>
                           </div>
 
                        </div>

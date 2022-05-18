@@ -718,9 +718,9 @@
                           </tr>
 
                           <tr style="text-align: center;">
-                             <th colspan="2">01. MUHAMMAD-AHMAD</th>
-                             <th colspan="2">02. HABIBI-AINUN</th>
-                             <th colspan="3">03. ROMEO-MOREO</th>
+                             <th colspan="2">01. KETUA-WAKIL</th>
+                             <th colspan="2">02. KETUA-WAKIL</th>
+                             <th colspan="3">03. KETUA-WAKIL</th>
                           </tr>
 
                           <tr>
@@ -756,7 +756,7 @@
                        <tbody>
                           <tr style="text-align: center;">
                              <th rowspan="2">01</th>
-                             <th colspan="3">MUHAMMAD-AHMAD</th>
+                             <th colspan="3">KETUA-WAKIL</th>
                              <td>
                                 <div class="row">
                                    <div class="col" style="width: 40px; margin-left:-5px;">
@@ -782,7 +782,7 @@
 
                           <tr style="text-align: center;">
                              <th rowspan="2">02</th>
-                             <th colspan=" 3">HABIBI-AINUN</th>
+                             <th colspan=" 3">KETUA-WAKIL</th>
                              <td>
                                 <div class="row">
                                    <div class="col" style="width: 40px; margin-left:-5px;">
@@ -808,7 +808,7 @@
 
                           <tr style="text-align: center;">
                              <th rowspan="2">03</th>
-                             <th colspan=" 3">ROMEO-MOREO</th>
+                             <th colspan=" 3">KETUA-WAKIL</th>
                              <td>
                                 <div class="row">
                                    <div class="col" style="width: 40px; margin-left:-5px;">
@@ -1059,9 +1059,9 @@
                     <table class="table table-bordered mt-1">
                        <thead>
                           <tr style="text-align: center;">
-                             <th>01. MUHAMMAD-AHMAD</th>
-                             <th>02. HABIBI-AINUN</th>
-                             <th>03. ROMEO-MOREO</th>
+                             <th>01. KETUA-WAKIL</th>
+                             <th>02. KETUA-WAKIL</th>
+                             <th>03. KETUA-WAKIL</th>
                           </tr>
                        </thead>
                        <tbody>

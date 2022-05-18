@@ -67,7 +67,7 @@
                  <div class="row" style="width: 300px;">
                     <div class="col-lg-6">
                        <!-- tombol tambah -->
-                       <a href="<?= base_url('Hasilpemilihan') ?>" class="btn btn-gradient mb-3 warnaprimer"><i class="fas fa-undo-alt"></i> Kembali</a>
+                       <a href="<?= base_url('Hasilpemilihan/') ?>" class="btn btn-gradient mb-3 warnaprimer"><i class="fas fa-undo-alt"></i> Kembali</a>
                     </div>
 
                     <div class="col-lg-6" style="margin-left: -25px;">
@@ -103,7 +103,7 @@
                                    <h5 class="card-title">01</h5>
                                 </div>
                                 <div class="col-lg-10">
-                                   <h5 class="card-title">Muhammad <br> Ahmad</h5>
+                                   <h5 class="card-title">Ketua <br> Wakil</h5>
                                 </div>
                              </div>
                              <hr>
@@ -121,7 +121,7 @@
                                    <h5 class="card-title">02</h5>
                                 </div>
                                 <div class="col-lg-10">
-                                   <h5 class="card-title">Habibi <br> Ainun</h5>
+                                   <h5 class="card-title">Ketua <br> Wakil</h5>
                                 </div>
                              </div>
                              <hr>
@@ -139,7 +139,7 @@
                                    <h5 class="card-title">03</h5>
                                 </div>
                                 <div class="col-lg-10">
-                                   <h5 class="card-title">Romeo <br> Moreo</h5>
+                                   <h5 class="card-title">Ketua <br> Wakil</h5>
                                 </div>
                              </div>
                              <hr>

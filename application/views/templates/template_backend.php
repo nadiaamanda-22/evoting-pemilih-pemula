@@ -16,6 +16,9 @@
    <link rel="icon" type="image/png" sizes="50x26" href="<?= base_url('assets/gambar/logokpu.png'); ?>">
 
 
+   <!-- datetime -->
+   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
    <!-- Bootstrap Css -->
    <link href="<?= base_url('assets/css/bootstrap.min.css') ?>" id="bootstrap-style" rel="stylesheet" type="text/css" />
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
@@ -139,7 +142,7 @@
                      </a>
                   </li>
 
-                  <li class="menu-title warnafont" key="t-pemilihan">Pemilihan</li>
+                  <!-- <li class="menu-title warnafont" key="t-pemilihan">Pemilihan</li> -->
 
                   <li>
                      <a href="<?= base_url('dpt') ?>" class="waves-effect">
@@ -169,7 +172,7 @@
                      </a>
                   </li>
 
-                  <li class="menu-title warnafont" key="t-user">User</li>
+                  <!-- <li class="menu-title warnafont" key="t-user">User</li>
 
                   <li>
                      <a href="<?= base_url('user') ?>" class="waves-effect">
@@ -183,7 +186,7 @@
                         <i class="bx bx-briefcase-alt-2"></i>
                         <span key="t-role">Role</span>
                      </a>
-                  </li>
+                  </li> -->
 
                </ul>
             </div>
@@ -241,6 +244,11 @@
    <!-- sweetalert -->
    <script src="<?= base_url('assets/sweetalert/dist/sweetalert2.all.min.js'); ?>"></script>
 
+   <!-- datetime -->
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
 
    <!-- JAVASCRIPT -->
    <script src="<?= base_url('assets/libs/metismenu/metisMenu.min.js') ?>"></script>
@@ -266,6 +274,20 @@
          let fileName = $(this).val().split('\\').pop();
          $(this).next('.custom-file-label').addClass("selected").html(fileName);
 
+      });
+
+      // datetime
+      $(function() {
+         $('input[name="datetimes"]').daterangepicker({
+            timePicker24Hour: true,
+            timePicker: true,
+            startDate: moment().startOf('hour'),
+            endDate: moment().startOf('hour').add(32, 'hour'),
+            drops: "up",
+            locale: {
+               format: 'M/DD/YYYY hh:mm A'
+            }
+         });
       });
    </script>
 
