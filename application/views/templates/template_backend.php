@@ -179,14 +179,14 @@
                         <i class="bx bx-user-circle"></i>
                         <span key="t-admin">User</span>
                      </a>
-                  </li>
+                  </li>-->
 
                   <li>
                      <a href="<?= base_url('role') ?>" class="waves-effect">
                         <i class="bx bx-briefcase-alt-2"></i>
                         <span key="t-role">Role</span>
                      </a>
-                  </li> -->
+                  </li>
 
                </ul>
             </div>
@@ -245,7 +245,6 @@
    <script src="<?= base_url('assets/sweetalert/dist/sweetalert2.all.min.js'); ?>"></script>
 
    <!-- datetime -->
-   <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
