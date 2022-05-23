@@ -14,12 +14,9 @@ PemilihModel.init({
     },
     jk_pemilih: {
         type: Sequelize.ENUM,
-        values:['Wanita','Pria']
+        values:['Perempuan','Laki-laki']
     },
     nama_ibu_kandung: {
-        type: Sequelize.CHAR
-    },
-    nomor_induk: {
         type: Sequelize.CHAR
     },
     nomor_induk_kependudukan: {
@@ -30,6 +27,10 @@ PemilihModel.init({
     },
     password: {
         type: Sequelize.CHAR
+    },
+    status_pemilihan: {
+        type: Sequelize.ENUM,
+        values:['0','1']
     },
     email: {
         type: Sequelize.CHAR
