@@ -111,9 +111,6 @@
                      <a class="dropdown-item" href="<?= base_url('profilakun') ?>"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">Profil Akun</span></a>
 
                      <div class="dropdown-divider"></div>
-                     <a class="dropdown-item" href="<?= base_url('profilinstansi') ?>"><i class="bx bx-store font-size-16 align-middle me-1"></i> <span key="t-logout">Profil Instansi</span></a>
-
-                     <div class="dropdown-divider"></div>
                      <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
                         <i class="bx bx-power-off font-size-16 align-middle me-1"></i> <span key="t-logout">Logout</span></a>
                   </div>
@@ -142,7 +139,12 @@
                      </a>
                   </li>
 
-                  <!-- <li class="menu-title warnafont" key="t-pemilihan">Pemilihan</li> -->
+                  <li>
+                     <a href="<?= base_url('profilinstansi') ?>" class="waves-effect">
+                        <i class="bx bx-store font-size-16 align-middle me-1"></i>
+                        <span key="t-dpt">Profil Instansi</span>
+                     </a>
+                  </li>
 
                   <li>
                      <a href="<?= base_url('dpt') ?>" class="waves-effect">
@@ -159,32 +161,9 @@
                   </li>
 
                   <li>
-                     <a href="<?= base_url('pemilihan') ?>" class="waves-effect">
-                        <i class="bx bx-list-ul"></i>
-                        <span key="t-pmlhn">Pemilihan</span>
-                     </a>
-                  </li>
-
-                  <li>
                      <a href="<?= base_url('hasilpemilihan') ?>" class="waves-effect">
                         <i class="bx bx-file"></i>
                         <span key="t-hasil">Hasil Pemilihan</span>
-                     </a>
-                  </li>
-
-                  <!-- <li class="menu-title warnafont" key="t-user">User</li>
-
-                  <li>
-                     <a href="<?= base_url('user') ?>" class="waves-effect">
-                        <i class="bx bx-user-circle"></i>
-                        <span key="t-admin">User</span>
-                     </a>
-                  </li>-->
-
-                  <li>
-                     <a href="<?= base_url('role') ?>" class="waves-effect">
-                        <i class="bx bx-briefcase-alt-2"></i>
-                        <span key="t-role">Role</span>
                      </a>
                   </li>
 

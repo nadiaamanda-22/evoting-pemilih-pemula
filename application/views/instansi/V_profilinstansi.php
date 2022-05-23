@@ -33,15 +33,18 @@
 
             <div class="row">
                <div class="col-xl">
-                  <div class="card mb-3" style="max-width: 700px;">
+                  <div class="card mb-3" style="max-width: 730px;">
                      <div class="row g-0">
                         <div class="col-md-4">
-                           <img src="<?= base_url('assets/gambar/logouika.png') ?>" class="img-fluid rounded-start" style="margin-left: 20px; margin-top:20px;">
+                           <img src="<?= base_url('assets/gambar/logouika.png') ?>" class="img-fluid rounded-start" style="margin-left: 20px; margin-top:30px;">
                         </div>
                         <div class="col-md-8">
                            <div class="card-body">
                               <h3 class="card-title">Nama Instansi</h3>
                               <p class="card-text">Universitas Ibn Khaldun Bogor</p>
+
+                              <h3 class="card-title">Nama Pemilihan</h3>
+                              <p class="card-text">Badan Eksekutif Mahasiswa (BEM)</p>
 
                               <h3 class="card-title">Alamat</h3>
                               <p class="card-text">Jl. KH Soleh Iskandar 2</p>

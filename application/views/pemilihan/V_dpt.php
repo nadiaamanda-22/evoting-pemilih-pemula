@@ -12,32 +12,25 @@
             </div>
             <!-- end judul halaman -->
 
+            <!-- datatable -->
             <div class="row">
                <div class="col-xl">
 
-
+                  <!-- tombol tambah dan import -->
                   <div class="row" style="width: 340px;">
+                     <!-- tombol tambah -->
                      <div class="col-lg-6">
-                        <!-- tombol tambah -->
                         <button type="button" class="btn btn-gradient warnaprimer" data-bs-toggle="modal" data-bs-target="#tambahDpt" style="margin-bottom:20px;">
                            <i class="fas fa-plus"></i> Tambah Data
                         </button>
                      </div>
 
+                     <!-- tombol import -->
                      <div class="col-lg-6">
-                        <!-- tombol export -->
-                        <div class="dropdown">
-                           <button class="btn btn-gradient dropdown-toggle warnaprimer" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                              <i class="fas fa-file-export"></i> Ekspor
-                           </button>
-                           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                              <li><a class="dropdown-item" href="<?= base_url('DPT/cetakPdfDpt') ?>" target="_blank">PDF</a></li>
-                              <li><a class="dropdown-item" href="<?= base_url('DPT/cetakCsvDpt') ?>">CSV</a></li>
-                              <li><a class="dropdown-item" href="<?= base_url('DPT/cetakXlsxDpt') ?>">XLXS</a></li>
-                           </ul>
-                        </div>
+                        <a href="" class="btn btn-gradient mb-3 warnaprimer" data-bs-toggle="modal" data-bs-target="#importData"><i class="fas fa-upload"></i> Import Data</a>
                      </div>
                   </div>
+                  <!-- end tombol -->
 
                   <table class="table table-striped" id="tableDpt">
                      <thead>
@@ -45,7 +38,7 @@
                            <th scope="col">No</th>
                            <th scope="col">Nama Pemilih</th>
                            <th scope="col">Username</th>
-                           <th scope="col">Nomor Induk</th>
+                           <th scope="col">Status Pemilihan</th>
                            <th scope="col">Aksi</th>
                         </tr>
                      </thead>
@@ -53,100 +46,227 @@
                      </tbody>
                   </table>
                </div>
-
             </div>
-            <!-- end row -->
+            <!-- end datatable -->
 
          </div>
-         <!-- container fluid -->
+         <!-- end container fluid -->
 
          <!-- Modal Tambah  -->
-         <div class="modal fade" id="tambahDpt" tabindex="-1" aria-labelledby="tambahDptLabel" aria-hidden="true">
-            <div class="modal-dialog">
-               <div class="modal-content">
-                  <div class="modal-header">
-                     <h5 class="modal-title" id="tambahDptLabel">Tambah Data</h5>
-                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                     <form>
-                        <div class="modal-body">
+         <div class="tambahdatamodal">
+            <div class="modal fade" id="tambahDpt" tabindex="-1" aria-labelledby="tambahDptLabel" aria-hidden="true">
+               <div class="modal-dialog">
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <h5 class="modal-title" id="tambahDptLabel">Tambah Data</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                     </div>
+                     <div class="modal-body">
+                        <form>
+                           <div class="modal-body">
 
-                           <div class="form-group" style="margin-bottom: 20px;">
-                              <input type="hidden" class="form-control" id="id_pemilih">
-                              <label class="col-lg-6 col-sm-4 control-label">Nama</label>
-                              <div class="col-md-12">
-                                 <input type="hidden" class="form-control">
-                                 <input type="text" class="form-control" id="tNamaPemilih" name="namaPemilih" placeholder="Masukkan Nama">
+                              <div class="form-group" style="margin-bottom: 20px;">
+                                 <input type="hidden" class="form-control" id="id_pemilih">
+                                 <label class="col-lg-6 col-sm-4 control-label">Nama</label>
+                                 <div class="col-md-12">
+                                    <input type="hidden" class="form-control">
+                                    <input type="text" class="form-control" id="tNamaPemilih" name="namaPemilih" placeholder="Masukkan Nama">
+                                 </div>
                               </div>
-                           </div>
 
-                           <div class="form-group" style="margin-bottom: 20px;">
-                              <label class="col-lg-6 col-sm-4 control-label">Jenis Kelamin </label>
-                              <div class="col-md-12">
-                                 <input type="text" class="form-control" id="tJenisKel" name="jkPemilih" placeholder="Jenis Kelamin">
+                              <div class="form-group" style="margin-bottom: 20px;">
+                                 <label class="col-lg-6 col-sm-4 control-label">Jenis Kelamin </label>
+                                 <div class="col-md-12">
+                                    <input type="text" class="form-control" id="tJenisKel" name="jkPemilih" placeholder="Jenis Kelamin">
+                                 </div>
                               </div>
-                           </div>
 
-                           <div class="form-group" style="margin-bottom: 20px;">
-                              <label class="col-lg-6 col-sm-4 control-label">Nama Ibu Kandung</label>
-                              <div class="col-md-12">
-                                 <input type="text" class="form-control" id="tNamaIbu" name="namaIbuKandung" placeholder="Masukkan Nama Ibu">
+                              <div class="form-group" style="margin-bottom: 20px;">
+                                 <label class="col-lg-6 col-sm-4 control-label">Nama Ibu Kandung</label>
+                                 <div class="col-md-12">
+                                    <input type="text" class="form-control" id="tNamaIbu" name="namaIbuKandung" placeholder="Masukkan Nama Ibu">
+                                 </div>
                               </div>
-                           </div>
 
-                           <div class="form-group" style="margin-bottom: 20px;">
-                              <label class="col-lg-4 col-sm-4 control-label">Nomor Induk</label>
-                              <div class="col-md-12">
-                                 <input type="text" class="form-control" id="tNomorInduk" name="nomorInduk" placeholder="Masukkan Nomor Induk">
+                              <div class="form-group" style="margin-bottom: 20px;">
+                                 <label class="col-lg-4 col-sm-4 control-label">Nomor Induk</label>
+                                 <div class="col-md-12">
+                                    <input type="text" class="form-control" id="tNomorInduk" name="nomorInduk" placeholder="Masukkan Nomor Induk">
+                                 </div>
                               </div>
-                           </div>
 
-                           <div class="form-group" style="margin-bottom: 20px;">
-                              <label class="col-lg-4 col-sm-4 control-label">NIK</label>
-                              <div class="col-md-12">
-                                 <input type="text" class="form-control" id="tNik" name="nik" placeholder="Masukkan NIK">
+                              <div class="form-group" style="margin-bottom: 20px;">
+                                 <label class="col-lg-4 col-sm-4 control-label">NIK</label>
+                                 <div class="col-md-12">
+                                    <input type="text" class="form-control" id="tNik" name="nik" placeholder="Masukkan NIK">
+                                 </div>
                               </div>
-                           </div>
 
-                           <div class="form-group" style="margin-bottom: 20px;">
-                              <label class="col-lg-4 col-sm-4 control-label">Username</label>
-                              <div class="col-md-12">
-                                 <input type="text" class="form-control" id="tUsername" name="username" placeholder="Masukkan Username">
+                              <div class="form-group" style="margin-bottom: 20px;">
+                                 <label class="col-lg-4 col-sm-4 control-label">Username</label>
+                                 <div class="col-md-12">
+                                    <input type="text" class="form-control" id="tUsername" name="username" placeholder="Masukkan Username">
+                                 </div>
                               </div>
-                           </div>
 
-                           <div class="form-group" style="margin-bottom: 20px;">
-                              <label class="col-lg-4 col-sm-4 control-label">Password</label>
-                              <div class="col-md-12">
-                                 <input type="password" class="form-control" id="tPassword" name="password" placeholder="Masukkan Password">
+                              <div class="form-group" style="margin-bottom: 20px;">
+                                 <label class="col-lg-4 col-sm-4 control-label">Password</label>
+                                 <div class="col-md-12">
+                                    <input type="password" class="form-control" id="tPassword" name="password" placeholder="Masukkan Password">
+                                 </div>
                               </div>
-                           </div>
 
-                           <div class="form-group" style="margin-bottom: 20px;">
-                              <label class="col-lg-4 col-sm-4 control-label">Email</label>
-                              <div class="col-md-12">
-                                 <input type="text" class="form-control" id="tEmail" name="email" placeholder="Masukkan Email">
+                              <div class="form-group" style="margin-bottom: 20px;">
+                                 <label class="col-lg-4 col-sm-4 control-label">Email</label>
+                                 <div class="col-md-12">
+                                    <input type="text" class="form-control" id="tEmail" name="email" placeholder="Masukkan Email">
+                                 </div>
                               </div>
-                           </div>
 
-                           <div class="form-group" style="margin-bottom: 20px;">
-                              <label class="col-lg-4 col-sm-4 control-label">Imei</label>
-                              <div class="col-md-12">
-                                 <input type="text" class="form-control" id="tImei" name="imei" placeholder="Masukkan Imei">
+                              <div class="form-group" style="margin-bottom: 20px;">
+                                 <label class="col-lg-4 col-sm-4 control-label">Imei</label>
+                                 <div class="col-md-12">
+                                    <input type="text" class="form-control" id="tImei" name="imei" placeholder="Masukkan Imei">
+                                 </div>
                               </div>
-                           </div>
-                     </form>
-                     <div class="modal-footer">
-                        <button type="button" class="btn btn-gradient warnaprimer" id="tambah" onclick="ButtonTambah()">Simpan</button>
-                        <button type="button" class="btn btn-gradient warnacancel" data-bs-dismiss="modal">Batal</button>
+                        </form>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-gradient warnaprimer" id="tambah" onclick="ButtonTambah()">Simpan</button>
+                           <button type="button" class="btn btn-gradient warnacancel" data-bs-dismiss="modal">Batal</button>
+                        </div>
                      </div>
                   </div>
                </div>
             </div>
          </div>
-         <!-- Akhir modal tambah -->
+         <!-- end modal tambah -->
+
+         <!-- Modal import data  -->
+         <div class="importdatamodal">
+            <div class="modal fade" id="importData" tabindex="-1" aria-labelledby="importDataLabel" aria-hidden="true">
+               <div class="modal-dialog">
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <h5 class="modal-title" id="importDataLabel">Import Data</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                     </div>
+                     <div class="modal-body">
+                        <form action="<?= base_url('DPT/importData'); ?>" method="post">
+                           <div class="modal-body">
+
+                              <div class="form-group" style="margin-bottom: 20px;">
+                                 <label class="col-lg-6 col-sm-4 control-label">Data DPT</label>
+                                 <div class="col-md-12">
+                                    <div class="custom-file">
+                                       <label class="custom-file-label" for="formFile">Pilih File</label>
+                                       <input class="custom-file-input" type="file" id="formFile" required accept=".xls, .xlsx">
+                                    </div>
+                                 </div>
+                              </div>
+
+                        </form>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-gradient warnaprimer">Simpan</button>
+                           <button type="button" class="btn btn-gradient warnacancel" data-bs-dismiss="modal">Batal</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- end modal -->
+
       </div>
+      <!-- end page content -->
+
+
+      <!-- Modal edit -->
+      <div class="modal fade" id="editDpt" tabindex="-1" aria-labelledby="editDptLabel" aria-hidden="true">
+         <div class="modal-dialog">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="editDptLabel">Edit Data</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                  <form method="POST">
+                     <div class="modal-body">
+
+                        <div class="form-group" style="margin-bottom: 20px;">
+                           <label class="col-lg-6 col-sm-4 control-label">Nama</label>
+                           <div class="col-md-12">
+                              <input type="hidden" class="form-control" id="idpemilih">
+                              <input type="text" class="form-control" id="dNama" name="nama_pemilih">
+                           </div>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 20px;">
+                           <label class="col-lg-6 col-sm-4 control-label">Jenis kelamin</label>
+                           <div class="col-md-12">
+                              <input type="text" class="form-control" id="dJenisKel" name="jkPemilih">
+                           </div>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 20px;">
+                           <label class="col-lg-6 col-sm-4 control-label">Nama Ibu Kandung</label>
+                           <div class="col-md-12">
+                              <input type="text" class="form-control" id="dNamaIbu" name="namaIbuKandung">
+                           </div>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 20px;">
+                           <label class="col-lg-4 col-sm-4 control-label">Nomor Induk</label>
+                           <div class="col-md-12">
+                              <input type="text" class="form-control" id="dNoInduk" name="nomorInduk">
+                           </div>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 20px;">
+                           <label class="col-lg-4 col-sm-4 control-label">NIK</label>
+                           <div class="col-md-12">
+                              <input type="text" class="form-control" id="dNik" name="noIndukKependudukan">
+                           </div>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 20px;">
+                           <label class="col-lg-4 col-sm-4 control-label">Username</label>
+                           <div class="col-md-12">
+                              <input type="text" class="form-control" id="dUsername" name="username">
+                           </div>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 20px;">
+                           <label class="col-lg-4 col-sm-4 control-label">Password</label>
+                           <div class="col-md-12">
+                              <input type="password" class="form-control" id="dPassword" name="password">
+                           </div>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 20px;">
+                           <label class="col-lg-4 col-sm-4 control-label">Email</label>
+                           <div class="col-md-12">
+                              <input type="text" class="form-control" id="dEmail" name="email">
+                           </div>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 20px;">
+                           <label class="col-lg-4 col-sm-4 control-label">Imei</label>
+                           <div class="col-md-12">
+                              <input type="text" class="form-control" id="dImei" name="imei">
+                           </div>
+                        </div>
+                     </div>
+                  </form>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-gradient warnaprimer" id="ButtonEditt">Simpan</button>
+                     <button type="button" class="btn btn-gradient warnacancel" data-bs-dismiss="modal">Batal</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end modal edit-->
+
 
       <!-- Modal detail -->
       <div class="detaildpt">
@@ -259,102 +379,11 @@
             </div>
          </div>
       </div>
-      <!-- Akhir modal detail-->
-
-
-      <!-- page content -->
-
-
-      <!-- Modal edit -->
-      <div class="modal fade" id="editDpt" tabindex="-1" aria-labelledby="editDptLabel" aria-hidden="true">
-         <div class="modal-dialog">
-            <div class="modal-content">
-               <div class="modal-header">
-                  <h5 class="modal-title" id="editDptLabel">Edit Data</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-               </div>
-               <div class="modal-body">
-                  <form method="POST">
-                     <div class="modal-body">
-
-                        <div class="form-group" style="margin-bottom: 20px;">
-                           <label class="col-lg-6 col-sm-4 control-label">Nama</label>
-                           <div class="col-md-12">
-                              <input type="hidden" class="form-control" id="idpemilih">
-                              <input type="text" class="form-control" id="dNama" name="nama_pemilih">
-                           </div>
-                        </div>
-
-                        <div class="form-group" style="margin-bottom: 20px;">
-                           <label class="col-lg-6 col-sm-4 control-label">Jenis kelamin</label>
-                           <div class="col-md-12">
-                              <input type="text" class="form-control" id="dJenisKel" name="jkPemilih">
-                           </div>
-                        </div>
-
-                        <div class="form-group" style="margin-bottom: 20px;">
-                           <label class="col-lg-6 col-sm-4 control-label">Nama Ibu Kandung</label>
-                           <div class="col-md-12">
-                              <input type="text" class="form-control" id="dNamaIbu" name="namaIbuKandung">
-                           </div>
-                        </div>
-
-                        <div class="form-group" style="margin-bottom: 20px;">
-                           <label class="col-lg-4 col-sm-4 control-label">Nomor Induk</label>
-                           <div class="col-md-12">
-                              <input type="text" class="form-control" id="dNoInduk" name="nomorInduk">
-                           </div>
-                        </div>
-
-                        <div class="form-group" style="margin-bottom: 20px;">
-                           <label class="col-lg-4 col-sm-4 control-label">NIK</label>
-                           <div class="col-md-12">
-                              <input type="text" class="form-control" id="dNik" name="nik">
-                           </div>
-                        </div>
-
-                        <div class="form-group" style="margin-bottom: 20px;">
-                           <label class="col-lg-4 col-sm-4 control-label">Username</label>
-                           <div class="col-md-12">
-                              <input type="text" class="form-control" id="dUsername" name="username">
-                           </div>
-                        </div>
-
-                        <div class="form-group" style="margin-bottom: 20px;">
-                           <label class="col-lg-4 col-sm-4 control-label">Password</label>
-                           <div class="col-md-12">
-                              <input type="password" class="form-control" id="dPassword" name="password">
-                           </div>
-                        </div>
-
-                        <div class="form-group" style="margin-bottom: 20px;">
-                           <label class="col-lg-4 col-sm-4 control-label">Email</label>
-                           <div class="col-md-12">
-                              <input type="text" class="form-control" id="dEmail" name="email">
-                           </div>
-                        </div>
-
-                        <div class="form-group" style="margin-bottom: 20px;">
-                           <label class="col-lg-4 col-sm-4 control-label">Imei</label>
-                           <div class="col-md-12">
-                              <input type="text" class="form-control" id="dImei" name="imei">
-                           </div>
-                        </div>
-                     </div>
-                  </form>
-                  <div class="modal-footer">
-                     <button type="button" class="btn btn-gradient warnaprimer" id="ButtonEditt">Simpan</button>
-                     <button type="button" class="btn btn-gradient warnacancel" data-bs-dismiss="modal">Batal</button>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- Akhir modal edit-->
+      <!-- end modal detail-->
 
 
    </div>
-   <!-- main content -->
+   <!-- end main content -->
 
 
    <script>
@@ -397,7 +426,7 @@
                },
                {
                   render: function(full, type, data, meta) {
-                     return data.nomor_induk;
+                     return data.status_pemilihan;
                   }
                },
                {
@@ -406,7 +435,7 @@
                      <button  class="btn btn-sm warnaprimer" data-bs-toggle="modal" data-bs-target="#editDpt" onclick='getIdDpt(${data.id_pemilih})'><i class="far fa-edit"></i></button>
                 			<button type="button" class="btn btn-sm warnadanger" onclick='ButtonHapus(${data.id_pemilih})'><i class="far fa-trash-alt"></button>`;
                   }
-               }
+               },
             ]
          });
       });
@@ -473,17 +502,25 @@
                if (response.sukses == false) {
                   Swal.fire({
                      icon: 'error',
-                     // title: 'Oops...',
                      text: response.alert,
                   })
                } else {
                   Swal.fire({
                      icon: 'success',
-                     // title: 'Yeayy',
                      text: response.alert
                   })
                }
                reloadTable();
+               $('#id_pemilih').val('');
+               $('#tNamaPemilih').val('');
+               $('#tJenisKel').val('');
+               $('#tNamaIbu').val('');
+               $('#tNomorInduk').val('');
+               $('#tNik').val('');
+               $('#tUsername').val('');
+               $('#tPassword').val('');
+               $('#tEmail').val('');
+               $('#tImei').val('');
                $('#tambahDpt').modal('hide');
             }
          })
@@ -514,7 +551,6 @@
                   success: function(response) {
                      Swal.fire({
                         icon: 'success',
-                        // title: 'Oops...',
                         text: response.alert,
                      })
                      reloadTable();
@@ -533,7 +569,7 @@
          let jkPemilih = $('#dJenisKel').val();
          let namaIbuKandung = $('#dNamaIbu').val();
          let nomorInduk = $('#dNoInduk').val();
-         let nik = $('#Nik').val();
+         let noIndukKependudukan = $('#dNik').val();
          let username = $('#dUsername').val();
          let password = $('#dPassword').val();
          let email = $('#dEmail').val();
@@ -548,7 +584,7 @@
                jk_pemilih: jkPemilih,
                nama_ibu_kandung: namaIbuKandung,
                nomor_induk: nomorInduk,
-               nomor_induk_kependudukan: nik,
+               nomor_induk_kependudukan: noIndukKependudukan,
                username: username,
                password: password,
                email: email,

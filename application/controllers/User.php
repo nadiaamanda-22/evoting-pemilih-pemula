@@ -7,12 +7,4 @@ class User extends CI_Controller
    {
       $this->template->load('templates/template_backend', 'user/V_user');
    }
-
-   public function addUser()
-   {
-   }
-
-   public function editUser()
-   {
-   }
 }

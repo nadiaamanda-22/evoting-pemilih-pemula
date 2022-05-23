@@ -26,7 +26,7 @@
 
                  <!-- tombol export -->
                  <button type="submit" class="btn btn-gradient warnaprimer mb-4">
-                    <i class="fas fa-file-export"></i> Ekspor PDF</button>
+                    <i class="fas fa-file-export"></i> Export PDF</button>
 
                  <!-- hasil pemilihan -->
                  <div class="card cardhasil shadow mb-5 bg-body rounded">

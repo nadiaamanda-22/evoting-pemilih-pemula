@@ -18,7 +18,7 @@
                   <!-- tombol export -->
                   <div class="dropdown">
                      <button class="btn btn-gradient dropdown-toggle warnaprimer mb-4" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-file-export"></i> Ekspor
+                        <i class="fas fa-file-export"></i> Export
                      </button>
                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li><a class="dropdown-item" href="#">PDF</a></li>

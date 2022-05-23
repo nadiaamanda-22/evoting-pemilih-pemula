@@ -15,30 +15,10 @@
             <div class="row">
                <div class="col-xl">
 
-                  <div class="row" style="width: 340px;">
-                     <div class="col-lg-6">
-                        <!-- tombol tambah -->
-                        <button type="button" class="btn btn-gradient warnaprimer" data-bs-toggle="modal" data-bs-target="#addKandidat" style="margin-bottom:20px;">
-                           <i class="fas fa-plus"></i> Tambah Data
-                        </button>
-                     </div>
-
-                     <div class="col-lg-6">
-                        <!-- tombol export -->
-                        <div class="dropdown">
-                           <button class="btn btn-gradient dropdown-toggle warnaprimer" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                              <i class="fas fa-file-export"></i> Ekspor
-                           </button>
-                           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                              <li><a class="dropdown-item" href="#">PDF</a></li>
-                              <li><a class="dropdown-item" href="#">CSV</a></li>
-                              <li><a class="dropdown-item" href="#">XLXS</a></li>
-                           </ul>
-                        </div>
-                     </div>
-                  </div>
-
-
+                  <!-- tombol tambah -->
+                  <button type="button" class="btn btn-gradient warnaprimer" data-bs-toggle="modal" data-bs-target="#addKandidat" style="margin-bottom:20px;">
+                     <i class="fas fa-plus"></i> Tambah Data
+                  </button>
 
                   <table class="table table-striped" id="tableKandidat">
                      <thead>

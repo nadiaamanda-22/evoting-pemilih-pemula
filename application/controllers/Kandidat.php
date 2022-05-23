@@ -7,12 +7,4 @@ class Kandidat extends CI_Controller
    {
       $this->template->load('templates/template_backend', 'pemilihan/V_kandidat');
    }
-
-   public function addkandidat()
-   {
-   }
-
-   public function editkandidat()
-   {
-   }
 }
