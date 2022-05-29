@@ -6,6 +6,7 @@ module.exports = function (app) {
     app.use('/v' + appConst.apiVersion + '/pemilih', require('../controller/PemilihController'));
     app.use('/v' + appConst.apiVersion + '/kandidat', require('../controller/KandidatController'));
     app.use('/v' + appConst.apiVersion + '/auth', require('../controller/AuthController'));
+    app.use('/v' + appConst.apiVersion + '/prosesmilih', require('../controller/ProsesMilihController'));
 }
 // 'use strict';
 // module.exports = (app) => {
