@@ -8,15 +8,18 @@ KandidatModel.init({
         type: Sequelize.INTEGER,
         primaryKey: true
     },
-    nama_kandidat: {
+    nama_ketua: {
         type: Sequelize.CHAR
     },
-    pasangan_kandidat: {
+    nama_wakil: {
         type: Sequelize.CHAR
     },
     foto_kandidat: {
         type: Sequelize.CHAR
-    }
+    },
+    hasil:{
+        type:Sequelize.INTEGER
+        }
 }, {
     defaultScope: { 
         where: Sequelize.literal('tb_kandidat.delete_at is null') 

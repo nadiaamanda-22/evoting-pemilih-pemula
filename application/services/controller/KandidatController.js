@@ -140,22 +140,24 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/insert',upload.fields([{name:"foto_kandidat",maxCount:1}]), (req, res) => {
-    console.log(req.files,req.body);
-    const a = console.log(foto_kandidat[6]);
-// router.post('/insert', (req, res) => {
+// router.post('/insert',upload.fields([{name:"foto_kandidat",maxCount:1}]), (req, res) => {
+//     console.log(req.files,req.body);
+//     const a = console.log(foto_kandidat[6]);
+router.post('/insert', (req, res) => {
     let modelAttr = KandidatModel.rawAttributes;
     let inputs = {};
     Object.values(modelAttr).forEach((val) => {  
         if (req.body[val.field] != null) {
             inputs[val.fieldName] = req.body[val.field];
-        } else if(req.files == true) {
-            inputs[val.fieldName] = req.files[0];
-        }
+        } 
+        inputs['hasil'] = '0';
+        // else if(req.files == true) {
+        //     inputs[val.fieldName] = req.files[0];
+        // }
     });
 
     KandidatModel.create(inputs).then(data => {
-        response.success(res, { message: 'create data success!', data: data }); 
+        response.success(res, { message: 'Tambah Data Kandidat Berhasil!', data: data }); 
     }).catch((err) => {
         response.error(res, { error: err.message }); 
     });
@@ -182,7 +184,7 @@ router.put('/update/:id', (req, res) => {
 });
 
 router.delete('/delete/:id', (req, res) => {
-    KandidatModel.update({ delete_asasdt: datetime.getCurrentDateTime() }, {
+    KandidatModel.update({ delete_at: datetime.getCurrentDateTime() }, {
         where: {
             [KandidatModel.primaryKeyAttribute]: req.params.id_kandidat
         }

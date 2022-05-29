@@ -3,10 +3,11 @@ const response = require('../helpers/response-parser');
 const pagination = require('../helpers/pagination-parser');
 const datetime = require('../helpers/datetime-helper');
 const Sequelize = require('sequelize');
-const RoleModel = require('../models/RoleModel');
+const AuthModel = require('../models/AuthModel');
 const fs = require('fs');
+const md5 = require('md5')
 const {where} = require('sequelize');
-// const RoleController = {};
+// const authController = {};
 router.get('/', (req, res) => {
 
     let size = parseInt(req.query.limit); //limit
@@ -18,7 +19,7 @@ router.get('/', (req, res) => {
     let search = req.query.search != null ? req.query.search : ''; //search 
     
 
-    let modelAttr = RoleModel.rawAttributes;
+    let modelAttr = AuthModel.rawAttributes;
     let wheres = [];
     Object.values(modelAttr).forEach((val) => {
         wheres.push({ [val.field]: { [Sequelize.Op.like]: '%' + search + '%' } });
@@ -34,11 +35,11 @@ router.get('/', (req, res) => {
     }
     if(req.query.limit != null){
         const resPage = pagination.getPagination(size, page);   
-        RoleModel.findAndCountAll({ 
+        AuthModel.findAndCountAll({ 
             limit: resPage.limit, 
             offset: resPage.offset, 
-            order: [[orderField != null ? orderField : 'id_role', orderValue != null ? orderValue : 'asc']], 
-            where:  Sequelize.and(Sequelize.literal('tb_role.delete_at is null'), { 
+            order: [[orderField != null ? orderField : 'id_auth', orderValue != null ? orderValue : 'asc']], 
+            where:  Sequelize.and(Sequelize.literal('tb_auth.delete_at is null'), { 
                         [Sequelize.Op.and]: (wheresF),             
                         [Sequelize.Op.or]: (wheres),  
                     }) 
@@ -63,9 +64,9 @@ router.get('/', (req, res) => {
             response.error(res, { error: 'Please cek your Signal!' });
         }); 
     }else{
-        RoleModel.findAll({
-            order: [[orderField != null ? orderField : 'id_role', orderValue != null ? orderValue : 'asc']], 
-            where:  Sequelize.and(Sequelize.literal('tb_role.delete_at is null'), { 
+        AuthModel.findAll({
+            order: [[orderField != null ? orderField : 'id_auth', orderValue != null ? orderValue : 'asc']], 
+            where:  Sequelize.and(Sequelize.literal('tb_auth.delete_at is null'), { 
                         [Sequelize.Op.and]: (wheresF),             
                         [Sequelize.Op.or]: (wheres),  
                     }) 
@@ -76,7 +77,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/find', (req, res) => {
-    let modelAttr = RoleModel.rawAttributes;
+    let modelAttr = AuthModel.rawAttributes;
     let wheres = {};
     Object.values(modelAttr).forEach((val) => {
         if (req.query[val.field] != null) {
@@ -84,7 +85,7 @@ router.get('/find', (req, res) => {
         }
     });
 
-    RoleModel.findAll({
+    AuthModel.findAll({
         where: Sequelize.and(Sequelize.literal('delete_at is null'), wheres),  
         }).then(data => {
         response.success(res, { data: data });
@@ -94,14 +95,14 @@ router.get('/find', (req, res) => {
 });
 
 router.get('/search/:term', (req, res) => {
-    let modelAttr = RoleModel.rawAttributes;
+    let modelAttr = AuthModel.rawAttributes;
     let wheres = [];
     Object.values(modelAttr).forEach((val) => {
         wheres.push({ [val.field]: { [Sequelize.Op.like]: '%' + req.params.term + '%' } });
     });
 
-    RoleModel.findAll({
-        where: Sequelize.and(Sequelize.literal('tb_role.delete_at is null'), { [Sequelize.Op.or]: (wheres) }), 
+    AuthModel.findAll({
+        where: Sequelize.and(Sequelize.literal('tb_auth.delete_at is null'), { [Sequelize.Op.or]: (wheres) }), 
     }).then(data => {
         response.success(res, { data: data });
     }).catch((err) => {
@@ -110,9 +111,9 @@ router.get('/search/:term', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    RoleModel.findOne({
-        where: Sequelize.and({ [RoleModel.primaryKeyAttribute]: req.params.id },
-        Sequelize.literal('tb_role.delete_at is null')),
+    AuthModel.findOne({
+        where: Sequelize.and({ [AuthModel.primaryKeyAttribute]: req.params.id },
+        Sequelize.literal('tb_auth.delete_at is null')),
     }).then(data => {
         response.success(res, { data: data });
     }).catch((err) => {
@@ -121,33 +122,36 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/insert', (req, res) => {
-    let modelAttr = RoleModel.rawAttributes;
+    let modelAttr = AuthModel.rawAttributes;
     let inputs = {};
     Object.values(modelAttr).forEach((val) => {  
         if (req.body[val.field] != null) {
             inputs[val.fieldName] = req.body[val.field];
-        }  
+        }
+        inputs['password'] = md5(req.body.password)  
     });
 
-    RoleModel.create(inputs).then(data => {
-        response.success(res, { message: 'create data success!', data: data }); 
+    AuthModel.create(inputs).then(data => {
+        response.success(res, { message: 'Tambah Admin Berhasil!', data: data }); 
     }).catch((err) => {
         response.error(res, { error: err.message }); 
     });
 });
 
 router.put('/update/:id', (req, res) => {
-    let modelAttr = RoleModel.rawAttributes;
+    let modelAttr = AuthModel.rawAttributes;
     let inputs = {};
     Object.values(modelAttr).forEach((val) => {
         if (req.body[val.field] != null) {
             inputs[val.fieldName] = req.body[val.field];
         }
+        inputs['password'] = md5(req.body.password)  
+
     });
 
-    RoleModel.update(inputs, {
+    AuthModel.update(inputs, {
         where: {
-            [RoleModel.primaryKeyAttribute]: req.params.id
+            [AuthModel.primaryKeyAttribute]: req.params.id
         }
     }).then(data => {
         response.success(res, { message: 'update data success!', data: inputs }); 
@@ -157,9 +161,9 @@ router.put('/update/:id', (req, res) => {
 });
 
 router.delete('/delete/:id', (req, res) => {
-    RoleModel.update({ delete_at: datetime.getCurrentDateTime() }, {
+    AuthModel.update({ delete_at: datetime.getCurrentDateTime() }, {
         where: {
-            [RoleModel.primaryKeyAttribute]: req.params.id_role
+            [AuthModel.primaryKeyAttribute]: req.params.id_auth
         }
     }).then(() => {
         response.success(res, { message: 'delete data success!' });
@@ -173,11 +177,33 @@ router.delete('/hard_delete/:id', (req, res) => {
     if(req.params.id == null){
         response.error(res, { error: 'Parameter id cannot be null' });
     }
-    RoleModel.destroy({ where: { [RoleModel.primaryKeyAttribute]: req.params.id } }).then(() => {
+    AuthModel.destroy({ where: { [AuthModel.primaryKeyAttribute]: req.params.id } }).then(() => {
         response.success(res, { message: 'hard delete data success!' });
     }).catch((err) => {
         response.error(res, { error: err.message });
     });
 });
 
+router.post('/login',(req,res)=>{
+    let modelAttr = AuthModel.rawAttributes;
+    let inputs = {};
+    Object.values(modelAttr).forEach((val) => {
+        inputs['username'] = req.body.username;
+        inputs['password'] = md5(req.body.password);
+    })
+
+    AuthModel.findOne({
+        where: Sequelize.and({username:req.body.username},Sequelize.literal('tb_auth.delete_at is null'))
+    }).then(data => {
+        if (data) {
+            if (data.password != md5(req.body.password)) {
+                response.error(res, { error:  'Password Salah'});  
+            }else{
+                response.success(res, {message:'Login Berhasil'});
+            }
+        }else{
+            response.error(res, { error:  'Username Tidak Terdaftar'});  
+        }
+    })    
+})
 module.exports = router;
