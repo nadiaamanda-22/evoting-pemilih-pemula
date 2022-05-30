@@ -36,7 +36,7 @@
                   <div class="card mb-3" style="max-width: 730px;">
                      <div class="row g-0">
                         <div class="col-md-4">
-                           <img src="<?= base_url('assets/gambar/logouika.png') ?>" class="img-fluid rounded-start" style="margin-left: 20px; margin-top:30px;">
+                           <img src="<?= base_url('assets/gambar/logo/logouika.png') ?>" class="img-fluid rounded-start" style="margin-left: 20px; margin-top:30px;">
                         </div>
                         <div class="col-md-8">
                            <div class="card-body">
@@ -46,7 +46,7 @@
                               <h3 class="card-title">Nama Pemilihan</h3>
                               <p class="card-text">Badan Eksekutif Mahasiswa (BEM)</p>
 
-                              <h3 class="card-title">Alamat</h3>
+                              <h3 class="card-title">Alamat Instansi</h3>
                               <p class="card-text">Jl. KH Soleh Iskandar 2</p>
 
 
@@ -112,7 +112,7 @@
                               </div>
 
                               <div class="form-group" style="margin-bottom: 20px;">
-                                 <label class="col-lg-4 col-sm-4 control-label">Alamat</label>
+                                 <label class="col-lg-4 col-sm-4 control-label">Alamat Instansi</label>
                                  <div class="col-md-12">
                                     <input type="text" class="form-control" id="alamatins" placeholder="Jl Kh Shole Iskandar 2">
                                  </div>

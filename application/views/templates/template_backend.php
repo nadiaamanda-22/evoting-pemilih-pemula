@@ -13,7 +13,7 @@
    <link href="<?= base_url('assets/sweetalert/dist/sweetalert2.min.css') ?>" rel="stylesheet">
 
    <!-- App favicon -->
-   <link rel="icon" type="image/png" sizes="50x26" href="<?= base_url('assets/gambar/logokpu.png'); ?>">
+   <link rel="icon" type="image/png" sizes="50x26" href="<?= base_url('assets/gambar/logo/logokpu.png'); ?>">
 
 
    <!-- datetime -->
@@ -57,12 +57,12 @@
                <div class="navbar-brand-box warnaprimer">
                   <a href="<?= base_url('dashboard') ?>" class="logo">
                      <span class="logo-sm">
-                        <img src="<?= base_url('assets/gambar/logokpu.png') ?>">
+                        <img src="<?= base_url('assets/gambar/logo/logokpu.png') ?>">
                      </span>
                      <span class="logo-lg">
                         <div class="row logoo">
                            <div class="col-3">
-                              <img src="<?= base_url('assets/gambar/logokpu.png') ?>">
+                              <img src="<?= base_url('assets/gambar/logo/logokpu.png') ?>">
                            </div>
 
                            <div class="col-6">
@@ -76,7 +76,7 @@
 
                <div class="logoinstansii">
                   <a href="<?= base_url('profilinstansi') ?>">
-                     <img src="<?= base_url('assets/gambar/logouika.png') ?>">
+                     <img src="<?= base_url('assets/gambar/logo/logouika.png') ?>">
                </div>
 
                <div class="nminstansi">
@@ -102,8 +102,8 @@
                <!-- Profil -->
                <div class="dropdown d-inline-block">
                   <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     <img class="rounded-circle header-profile-user" src="<?= base_url('assets/gambar/profil.png') ?>" alt="Header Avatar">
-                     <span class="d-none d-xl-inline-block ms-1" key="t-henry">AdminInstansi</span>
+                     <img class="rounded-circle header-profile-user" src="<?= base_url('assets/gambar/user.jpg') ?>" alt="Header Avatar">
+                     <span class="d-none d-xl-inline-block ms-1" key="t-henry">AdminPanitia</span>
                      <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                   </button>
                   <div class="dropdown-menu dropdown-menu-end">

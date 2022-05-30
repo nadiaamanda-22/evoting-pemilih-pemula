@@ -4,12 +4,12 @@
 <head>
 
    <meta charset="utf-8" />
-   <title>Log in</title>
+   <title>Login</title>
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
    <meta content="Themesbrand" name="author" />
    <!-- App favicon -->
-   <link rel="icon" type="image/png" sizes="50x26" href="<?= base_url('assets/gambar/logokpu.png'); ?>">
+   <link rel="icon" type="image/png" sizes="50x26" href="<?= base_url('assets/gambar/logo/logokpu.png'); ?>">
 
    <!-- Bootstrap Css -->
    <link href="<?= base_url('assets/css/bootstrap.min.css') ?>" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -136,8 +136,8 @@
                <div class="col-sm-12">
                   <div class="login">
                      <div class="text-center">
-                        <img src="<?= base_url('assets/gambar/logokpu.png') ?>" width="75" class="rounded mt-5" alt="...">
-                        <img src="<?= base_url('assets/gambar/logouika.png') ?>" width="75" class="rounded mt-5">
+                        <img src="<?= base_url('assets/gambar/logo/logokpu.png') ?>" width="75" class="rounded mt-5" alt="...">
+                        <img src="<?= base_url('assets/gambar/logo/logouika.png') ?>" width="75" class="rounded mt-5">
                      </div>
                      <h5 class="text-center lh-sm">E-Voting</h5>
                      <hr>
@@ -152,7 +152,7 @@
                               <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan password">
                            </div>
                            <div class="submit text-center">
-                              <button type="submit" class="btnmasuk">Log In</button>
+                              <button type="submit" class="btnmasuk">Login</button>
                            </div>
 
                         </form>

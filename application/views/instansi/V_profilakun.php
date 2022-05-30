@@ -15,11 +15,11 @@
             <div class="cardakun shadow p-3 mb-5 bg-body rounded" style="max-width: 540px;">
                <div class="row g-0">
                   <div class="col-md-4">
-                     <img src="<?= base_url('assets/gambar/profil.png') ?>" width="150" height="150" class="img-fluid rounded-start">
+                     <img src="<?= base_url('assets/gambar/user.jpg') ?>" width="150" height="150" class="img-fluid rounded-start">
                   </div>
                   <div class="col-md-8">
                      <div class="card-body">
-                        <h5 class="card-title" style="margin-top: 30px; font-size:20px;">AdminInstansi</h5>
+                        <h5 class="card-title" style="margin-top: 30px; font-size:20px;">AdminPanitia</h5>
                         <button type="button" class="btn btn-gradient warnaprimer" data-bs-toggle="modal" data-bs-target="#editAkun" style="margin-top: 10px;"><i class="far fa-edit"></i> Ubah</button>
                      </div>
                   </div>
@@ -45,7 +45,7 @@
                            <div class="form-group" style="margin-bottom: 20px;">
                               <label class="col-lg-6 col-sm-4 control-label">Username</label>
                               <div class="col-md-12">
-                                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="AdminInstansi" disabled>
+                                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="AdminPanitia" disabled>
                               </div>
                            </div>
 

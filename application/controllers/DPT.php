@@ -47,22 +47,20 @@ class DPT extends CI_Controller
    public function tambahDpt()
    {
 
+      $username = $this->input->post('username');
       $namaPemilih =  $this->input->post('nama_pemilih');
       $jkPemilih = $this->input->post('jk_pemilih');
       $namaIbuKandung = $this->input->post('nama_ibu_kandung');
-      $nomorInduk = $this->input->post('nomor_induk');
       $nik = $this->input->post('nomor_induk_kependudukan');
-      $username = $this->input->post('username');
       $password = $this->input->post('password');
       $email = $this->input->post('email');
       $imei = $this->input->post('imei');
 
+      $this->form_validation->set_rules('username', 'Username', 'required|numeric');
       $this->form_validation->set_rules('nama_pemilih', 'Nama Pemilih', 'required');
       $this->form_validation->set_rules('jk_pemilih', 'Jenis Kelamin Pemilih', 'required');
       $this->form_validation->set_rules('nama_ibu_kandung', 'Nama Ibu Kandung', 'required');
-      $this->form_validation->set_rules('nomor_induk', 'Nomor Induk', 'required|numeric');
       $this->form_validation->set_rules('nomor_induk_kependudukan', 'Nomor Induk Kependudukan', 'required|numeric');
-      $this->form_validation->set_rules('username', 'Username', 'required');
       $this->form_validation->set_rules('password', 'Password', 'required');
       $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
       $this->form_validation->set_rules('imei', 'Imei', 'required');
@@ -77,12 +75,11 @@ class DPT extends CI_Controller
          $ch = curl_init();
          $url = "http://localhost:3000/v1/pemilih/insert";
          $postapi = [
+            'username' => $username,
             'nama_pemilih' => $namaPemilih,
             'jk_pemilih' => $jkPemilih,
             'nama_ibu_kandung' => $namaIbuKandung,
-            'nomor_induk' => $nomorInduk,
             'nomor_induk_kependudukan' => $nik,
-            'username' => $username,
             'password' => $password,
             'email' => $email,
             'imei' => $imei
@@ -166,15 +163,7 @@ class DPT extends CI_Controller
       $email = $this->input->post('email');
       $imei = $this->input->post('imei');
 
-      $this->form_validation->set_rules('nama_pemilih', 'Nama Pemilih', 'required');
-      $this->form_validation->set_rules('jk_pemilih', 'Jenis Kelamin Pemilih', 'required');
       $this->form_validation->set_rules('nama_ibu_kandung', 'Nama Ibu Kandung', 'required');
-      $this->form_validation->set_rules('nomor_induk', 'Nomor Induk', 'required|numeric');
-      $this->form_validation->set_rules('nomor_induk_kependudukan', 'Nomor Induk Kependudukan', 'required|numeric');
-      $this->form_validation->set_rules('username', 'Username', 'required');
-      $this->form_validation->set_rules('password', 'Password', 'required');
-      $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-      $this->form_validation->set_rules('imei', 'Imei', 'required');
 
       if ($this->form_validation->run() == FALSE) {
          $response = [
@@ -223,5 +212,180 @@ class DPT extends CI_Controller
    //import data
    public function importData()
    {
+   }
+
+   //cetak pdf
+   public function cetakDptPdf()
+   {
+
+      //get data dari api
+      $api = $this->curl->simple_get($this->api);
+      $decode = json_decode($api, true);
+      $dpt = $decode['data'];
+
+      $pdf = new PDF();
+      $pdf->SetTitle('DPT ' . date('d-m-Y'));
+      $pdf->SetMargins(10, 20, 20, 10);
+      $pdf->SetAutoPageBreak(true, 30);
+
+      // membuat halaman baru
+      $pdf->AddPage('L');
+
+
+      // header
+      $pdf->Image('assets/gambar/logokpu.png', 13, 6, 25, 26);
+
+      $pdf->SetFont('Arial', 'B', 11);
+      $pdf->Cell(270, -10, 'DAFTAR PEMILIH TETAP', 0, 1, 'C');
+      $pdf->Cell(270, 20, 'PEMILIHAN UMUM KETUA DAN WAKIL KETUA BEM', 0, 1, 'C');
+      $pdf->Cell(270, -10, 'UNIVERSITAS IBN KHALDUN BOGOR PERIODE 2022-2023', 0, 0, 'C');
+
+      $pdf->Image('assets/gambar/logouika.png', 257, 6, 25, 26);
+      // end header
+
+      $pdf->Ln(33);
+
+      //buat garis horisontal
+      $pdf->Line(10, 40, 286, 40);
+
+      $pdf->Ln(-15);
+
+      // Judul tabel
+      $pdf->SetFont('Arial', 'B', 10);
+
+      $pdf->Cell(10, 10, 'No', 1, 0, 'C');
+      $pdf->Cell(40, 10, 'Username', 1, 0, 'C');
+      $pdf->Cell(40, 10, 'Nama', 1, 0, 'C');
+      $pdf->Cell(33, 10, 'Status Pemilihan', 1, 0, 'C');
+      $pdf->Cell(33, 10, 'Jenis Kelamin', 1, 0, 'C');
+      $pdf->Cell(30, 10, 'Email', 1, 0, 'C');
+      $pdf->Cell(40, 10, 'Nama Ibu Kandung', 1, 0, 'C');
+      $pdf->Cell(35, 10, 'NIK', 1, 0, 'C');
+      $pdf->Cell(15, 10, 'Imei  ', 1, 1, 'C');
+
+      //isi tabel
+      $pdf->SetFont('Arial', '', 10);
+      $no = 1;
+      foreach ($dpt as $d) {
+
+         $pdf->Cell(10, 10, $no, 1, 0, 'C');
+         $pdf->Cell(40, 10, $d['username'], 1, 0, 'C');
+         $pdf->Cell(40, 10, $d['nama_pemilih'], 1, 0, 'C');
+         $pdf->Cell(33, 10, $d['status_pemilihan'], 1, 0, 'C');
+         $pdf->Cell(33, 10, $d['jk_pemilih'], 1, 0, 'C');
+         $pdf->Cell(30, 10, $d['email'], 1, 0, 'C');
+         $pdf->Cell(40, 10, $d['nama_ibu_kandung'], 1, 0, 'C');
+         $pdf->Cell(35, 10, $d['nomor_induk_kependudukan'], 1, 0, 'C');
+         $pdf->Cell(15, 10, $d['imei'], 1, 0, 'C');
+         $no++;
+         $pdf->Ln();
+      }
+      $pdf->Output();
+   }
+
+   //cetak csv
+   public function cetakDptCsv()
+   {
+      $file_name = 'DPT ' . date('d-m-Y') . '.csv';
+      header("Content-Description: File Transfer");
+      header("Content-Disposition: attachment; filename=$file_name");
+      header("Content-Type: application/csv;");
+
+      // get data 
+      $api = $this->curl->simple_get($this->api);
+      $decode = json_decode($api, true);
+      $dpt = $decode['data'];
+
+      // file creation 
+      $file = fopen('php://output', 'w');
+
+      //judul tabel
+      $header = array("Nomor", "Username", "Nama", "Status Pemilihan", "Jenis Kelamin", "Email", "Nama Ibu Kandung", "NIK", "Imei");
+      fputcsv($file, $header);
+
+      //isi tabel
+      $no = 1;
+      foreach ($dpt as $d) {
+         fputcsv($file, [
+            $no,
+            $d['username'],
+            $d['nama_pemilih'],
+            $d['status_pemilihan'],
+            $d['jk_pemilih'],
+            $d['email'],
+            $d['nama_ibu_kandung'],
+            $d['nomor_induk_kependudukan'],
+            $d['imei']
+         ]);
+         $no++;
+      }
+
+      fclose($file);
+      exit;
+   }
+
+
+   //cetak xlsx
+   public function cetakDptXlsx()
+   {
+      // get data
+      $api = $this->curl->simple_get($this->api);
+      $decode = json_decode($api, true);
+      $dpt = $decode['data'];
+
+      include_once APPPATH . '/third_party/excelXlsx/xlsxwriter.class.php';
+      ini_set('display_errors', 0);
+      ini_set('log_errors', 1);
+      error_reporting(E_ALL & ~E_NOTICE);
+
+      $filename = "DPT " . date('d-m-Y') . ".xlsx";
+
+      header('Content-disposition: attachment; filename="' . XLSXWriter::sanitize_filename($filename) . '"');
+      header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+      header('Content-Transfer-Encoding: binary');
+      header('Cache-Control: must-revalidate');
+      header('Pragma: public');
+
+      $styles = array('widths' => [3, 30, 30, 20, 20, 25, 20, 20], 'font' => 'Arial', 'font-size' => 10, 'font-style' => 'bold', 'fill' => '#eee', 'halign' => 'center', 'border' => 'left,right,top,bottom');
+
+      // judul tabel
+      $header = array(
+         'No' => 'integer',
+         'Username' => 'string',
+         'Nama' => 'string',
+         'Jenis Kelamin' => 'string',
+         'Status Pemilihan' => 'string',
+         'Email' => 'string',
+         'Nama Ibu Kandung' => 'string',
+         'NIK' => 'string',
+         'Imei' => 'string'
+      );
+
+      $writer = new XLSXWriter();
+      $writer->setAuthor('Me');
+
+      $writer->writeSheetHeader('Sheet1', $header, $styles);
+
+      // isi tabel
+      $no = 1;
+      foreach ($dpt as $dpt) {
+         $writer->writeSheetRow(
+            'Sheet1',
+            [
+               $no,
+               $dpt['username'],
+               $dpt['nama_pemilih'],
+               $dpt['jk_pemilih'],
+               $dpt['status_pemilihan'],
+               $dpt['email'],
+               $dpt['nama_ibu_kandung'],
+               $dpt['nomor_induk_kependudukan'],
+               $dpt['imei']
+            ]
+         );
+         $no++;
+      }
+
+      $writer->writeToStdOut();
    }
 }

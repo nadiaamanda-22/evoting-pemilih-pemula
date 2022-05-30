@@ -22,7 +22,7 @@
                            <div class="d-flex">
                               <div class="flex-grow-1">
                                  <p class="text-muted fw-medium" style="text-align: left;">Jumlah Daftar Pemilih Tetap</p>
-                                 <h4 class="mb-0">1,235</h4>
+                                 <h4 class="mb-0">500</h4>
                               </div>
 
                               <div class="flex-shrink-0 align-self-center">
@@ -42,7 +42,7 @@
                            <div class="d-flex">
                               <div class="flex-grow-1">
                                  <p class="text-muted fw-medium" style="text-align: left;">Jumlah Pemilih Sudah Memilih</p>
-                                 <h4 class="mb-0">1,235</h4>
+                                 <h4 class="mb-0">500</h4>
                               </div>
 
                               <div class="flex-shrink-0 align-self-center">

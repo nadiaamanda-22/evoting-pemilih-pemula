@@ -33,9 +33,9 @@
                      <tbody>
                         <tr>
                            <td scope="row">1</td>
-                           <td>Muhammad</td>
-                           <td>Ahmad</td>
-                           <td><img src="<?= base_url('assets/gambar/pidato.jpg') ?>" width="100" height="100"></td>
+                           <td>Bahar</td>
+                           <td>Nur Khofifah Saadiah</td>
+                           <td><img src="<?= base_url('assets/gambar/kandidat/1.jpeg') ?>" width="130" height="100"></td>
                            <td>
 
                               <button type="button" class="btn btn-gradient warnaprimer" data-bs-toggle="modal" data-bs-target="#editKandidat"><i class="far fa-edit"></i></button>
@@ -46,9 +46,9 @@
 
                         <tr>
                            <td scope="row">2</td>
-                           <td>Susi</td>
-                           <td>Ridwan</td>
-                           <td><img src="<?= base_url('assets/gambar/pidato.jpg') ?>" width="100" height="100"></td>
+                           <td>Garis Haikal A</td>
+                           <td>Dimas Mulya Saputra</td>
+                           <td><img src="<?= base_url('assets/gambar/kandidat/2.jpeg') ?>" width="130" height="100"></td>
                            <td>
 
                               <button type="button" class="btn btn-gradient warnaprimer" data-bs-toggle="modal" data-bs-target="#editKandidat"><i class="far fa-edit"></i></button>
@@ -59,9 +59,9 @@
 
                         <tr>
                            <td scope="row">3</td>
-                           <td>Himawan</td>
-                           <td>Reza</td>
-                           <td><img src="<?= base_url('assets/gambar/pidato.jpg') ?>" width="100" height="100"></td>
+                           <td>Ardian Fakhturahman</td>
+                           <td>Reky Prastian P</td>
+                           <td><img src="<?= base_url('assets/gambar/kandidat/3.jpeg') ?>" width="130" height="100"></td>
                            <td>
 
                               <button type="button" class="btn btn-gradient warnaprimer" data-bs-toggle="modal" data-bs-target="#editKandidat"><i class="far fa-edit"></i></button>
