@@ -102,7 +102,7 @@
                <!-- Profil -->
                <div class="dropdown d-inline-block">
                   <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     <img class="rounded-circle header-profile-user" src="<?= base_url('assets/gambar/user.jpg') ?>" alt="Header Avatar">
+                     <!-- <img class="rounded-circle header-profile-user" src="<?= base_url('assets/gambar/user.jpg') ?>" alt="Header Avatar"> -->
                      <span class="d-none d-xl-inline-block ms-1" key="t-henry">AdminPanitia</span>
                      <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                   </button>
@@ -166,6 +166,13 @@
                         <span key="t-hasil">Hasil Pemilihan</span>
                      </a>
                   </li>
+
+                  <!-- <li>
+                     <a href="<?= base_url('role') ?>" class="waves-effect">
+                        <i class="bx bx-file"></i>
+                        <span key="t-hasil">Role</span>
+                     </a>
+                  </li> -->
 
                </ul>
             </div>

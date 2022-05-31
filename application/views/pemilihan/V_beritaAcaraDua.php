@@ -30,12 +30,10 @@
         width: 500px;
      }
 
-     .breadcrumb {
-        background-color: #fff;
-     }
-
-     .breadcrumb-item a {
-        color: #d67d3e;
+     .nav-tabs {
+        margin-top: 20px;
+        width: 200px;
+        margin-left: 20px;
      }
   </style>
 
@@ -59,16 +57,18 @@
                     </div>
                  </div>
 
-                 <!-- breadcrumb -->
+                 <!-- tombol form -->
                  <div class="row">
-                    <nav aria-label="breadcrumb">
-                       <ol class="breadcrumb">
-                          <li class="breadcrumb-item"><a href="<?= base_url('Formlaporan/index') ?>">Form 1</a></li>
-                          <li class="breadcrumb-item"><a href="<?= base_url('Formlaporan/formDua') ?>">Form 2</a></li>
-                       </ol>
-                    </nav>
+                    <ul class="nav nav-tabs">
+                       <li class="nav-item">
+                          <a class="nav-link" aria-current="page" href="<?= base_url('Formlaporan/index') ?>">Form 1</a>
+                       </li>
+                       <li class=" nav-item">
+                          <a class="nav-link active" href="<?= base_url('Formlaporan/formDua') ?>">Form 2</a>
+                       </li>
+                    </ul>
                  </div>
-                 <!-- end breadcrumb -->
+                 <!-- end tombol form -->
 
 
                  <!-- form 2 -->

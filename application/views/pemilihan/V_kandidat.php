@@ -16,7 +16,7 @@
                <div class="col-xl">
 
                   <!-- tombol tambah -->
-                  <button type="button" class="btn btn-gradient warnaprimer" data-bs-toggle="modal" data-bs-target="#addKandidat" style="margin-bottom:20px;">
+                  <button type="button" class="btn btn-gradient warnaprimer" data-bs-toggle="modal" data-bs-target="#tambahKandidat" style="margin-bottom:20px;">
                      <i class="fas fa-plus"></i> Tambah Data
                   </button>
 
@@ -31,44 +31,6 @@
                         </tr>
                      </thead>
                      <tbody>
-                        <tr>
-                           <td scope="row">1</td>
-                           <td>Bahar</td>
-                           <td>Nur Khofifah Saadiah</td>
-                           <td><img src="<?= base_url('assets/gambar/kandidat/1.jpeg') ?>" width="130" height="100"></td>
-                           <td>
-
-                              <button type="button" class="btn btn-gradient warnaprimer" data-bs-toggle="modal" data-bs-target="#editKandidat"><i class="far fa-edit"></i></button>
-
-                              <a href="#" class=" btn btn-gradient warnadanger"><i class="far fa-trash-alt"></i></a>
-                           </td>
-                        </tr>
-
-                        <tr>
-                           <td scope="row">2</td>
-                           <td>Garis Haikal A</td>
-                           <td>Dimas Mulya Saputra</td>
-                           <td><img src="<?= base_url('assets/gambar/kandidat/2.jpeg') ?>" width="130" height="100"></td>
-                           <td>
-
-                              <button type="button" class="btn btn-gradient warnaprimer" data-bs-toggle="modal" data-bs-target="#editKandidat"><i class="far fa-edit"></i></button>
-
-                              <a href="#" class=" btn btn-gradient warnadanger"><i class="far fa-trash-alt"></i></a>
-                           </td>
-                        </tr>
-
-                        <tr>
-                           <td scope="row">3</td>
-                           <td>Ardian Fakhturahman</td>
-                           <td>Reky Prastian P</td>
-                           <td><img src="<?= base_url('assets/gambar/kandidat/3.jpeg') ?>" width="130" height="100"></td>
-                           <td>
-
-                              <button type="button" class="btn btn-gradient warnaprimer" data-bs-toggle="modal" data-bs-target="#editKandidat"><i class="far fa-edit"></i></button>
-
-                              <a href="#" class=" btn btn-gradient warnadanger"><i class="far fa-trash-alt"></i></a>
-                           </td>
-                        </tr>
                      </tbody>
                   </table>
                </div>
@@ -81,37 +43,31 @@
       </div>
       <!-- page content -->
 
-      <script>
-         $(document).ready(function() {
-            $('#tableKandidat').DataTable();
-         });
-      </script>
-
 
       <!-- Modal Tambah  -->
-      <div class="modal fade" id="addKandidat" tabindex="-1" aria-labelledby="addKandidatLabel" aria-hidden="true">
+      <div class="modal fade" id="tambahKandidat" tabindex="-1" aria-labelledby="tambahKandidatLabel" aria-hidden="true">
          <div class="modal-dialog">
             <div class="modal-content">
                <div class="modal-header">
-                  <h5 class="modal-title" id="addKandidatLabel">Tambah Data</h5>
+                  <h5 class="modal-title" id="tambahKandidatLabel">Tambah Data</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                </div>
                <div class="modal-body">
-                  <form action="<?= base_url('kandidat/addKandidat'); ?>" method="post">
+                  <form>
                      <div class="modal-body">
 
                         <div class="form-group" style="margin-bottom: 20px;">
                            <label class="col-lg-4 col-sm-4 control-label">Nama Kandidat</label>
                            <div class="col-md-12">
-                              <input type="hidden" class="form-control">
-                              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan Nama Kandidat">
+                              <input type="hidden" class="form-control" id="id_kandidat">
+                              <input type="text" class="form-control" id="namaKetua" name="namaKetua" placeholder="Masukkan Nama Kandidat">
                            </div>
                         </div>
 
                         <div class="form-group" style="margin-bottom: 20px;">
                            <label class="col-lg-6 col-sm-4 control-label">Nama Pasangan Kandidat</label>
                            <div class="col-md-12">
-                              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan Nama Pasangan Kandidat">
+                              <input type="text" class="form-control" id="namaWakil" name="namaWakil" placeholder="Masukkan Nama Pasangan Kandidat">
                            </div>
                         </div>
 
@@ -127,7 +83,7 @@
 
                   </form>
                   <div class="modal-footer">
-                     <button type="button" class="btn btn-gradient warnaprimer">Simpan</button>
+                     <button type="button" class="btn btn-gradient warnaprimer" id="tambah" onclick="ButtonTambah()">Simpan</button>
                      <button type="button" class="btn btn-gradient warnacancel" data-bs-dismiss="modal">Batal</button>
                   </div>
                </div>
@@ -148,14 +104,14 @@
                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-               <form action="<?= base_url('kandidat/editKandidat'); ?>" method="post">
+               <form>
                   <div class="modal-body">
 
                      <div class="form-group" style="margin-bottom: 20px;">
                         <label class="col-lg-4 col-sm-4 control-label">Nama Kandidat</label>
                         <div class="col-md-12">
-                           <input type="hidden" class="form-control">
-                           <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan Nama Kandidat">
+                           <input type="hidden" class="form-control" id="id_kandidat">
+                           <input type="text" class="form-control" id="nama_ketua" name="namaKetua">
                         </div>
                      </div>
 
@@ -163,7 +119,7 @@
                         <label class="col-lg-6 col-sm-4 control-label">Nama Pasangan Kandidat</label>
                         <div class="col-md-12">
                            <input type="hidden" class="form-control">
-                           <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan Nama Pasangan Kandidat">
+                           <input type="text" class="form-control" id="nama_wakil" name="namaWakil">
                         </div>
                      </div>
 
@@ -179,7 +135,7 @@
 
                </form>
                <div class="modal-footer">
-                  <button type="button" class="btn btn-gradient warnaprimer">Simpan</button>
+                  <button type="button" class="btn btn-gradient warnaprimer" id="ButtonEdit">Simpan</button>
                   <button type="button" class="btn btn-gradient warnacancel" data-bs-dismiss="modal">Batal</button>
                </div>
             </div>
@@ -187,3 +143,183 @@
       </div>
    </div>
    <!-- Akhir modal edit-->
+
+
+   <script>
+      //reload table
+      function reloadTable() {
+         Tblkandidat.ajax.reload();
+      }
+
+      //nampilin datatable
+      $(document).ready(function() {
+
+         var table = $('#tableKandidat');
+
+         Tblkandidat = table.DataTable({
+
+            ajax: {
+               url: base + "kandidat/getKandidat",
+               type: "POST",
+               dataSrc: "",
+               dataType: "json",
+               data: function(d) {
+                  nomer = 0;
+               },
+            },
+            columns: [{
+                  render: function(full, type, data, meta) {
+                     return nomer += 1;
+                     return nomer;
+                  }
+               },
+               {
+                  render: function(full, type, data, meta) {
+                     return data.nama_ketua;
+                  }
+               },
+               {
+                  render: function(full, type, data, meta) {
+                     return data.nama_wakil;
+                  }
+               },
+               {
+                  render: function(full, type, data, meta) {
+                     return data.foto_kandidat;
+                  }
+               },
+               {
+                  render: function(full, type, data, meta) {
+                     return `<button  class="btn btn-sm warnaprimer" data-bs-toggle="modal" data-bs-target="#editKandidat" onclick='getIdKandidat(${data.id_kandidat})'><i class="far fa-edit"></i></button>
+                			<button type="button" class="btn btn-sm warnadanger" onclick='ButtonHapus(${data.id_kandidat})'><i class="far fa-trash-alt"></button>`;
+                  }
+               }
+            ]
+         });
+      });
+
+      //get data perid
+      function getIdKandidat(id_kandidat) {
+         $.ajax({
+            url: base + 'Kandidat/getIdKandidat/' + id_kandidat,
+            type: 'GET',
+            dataType: 'json',
+            cache: false,
+            success: function(data) {
+               $('#id_kandidat').val(data.id_kandidat);
+               $('#nama_ketua').val(data.nama_ketua);
+               $('#nama_wakil').val(data.nama_wakil);
+               $('#editKandidat').modal('show');
+
+               console.log(data.id_kandidat);
+            }
+         })
+      }
+
+      // tambah data
+      function ButtonTambah() {
+         let id_kandidat = $('#id_kandidat').val();
+         let nama_ketua = $('#namaKetua').val();
+         let nama_wakil = $('#namaWakil').val();
+
+         $.ajax({
+            url: base + 'kandidat/tambahKandidat',
+            data: {
+               id_kandidat: id_kandidat,
+               nama_ketua: nama_ketua,
+               nama_wakil: nama_wakil
+            },
+            dataType: 'json',
+            type: 'POST',
+            cache: false,
+            success: function(response) {
+               if (response.sukses == false) {
+                  Swal.fire({
+                     icon: 'error',
+                     text: response.alert,
+                  })
+               } else {
+                  Swal.fire({
+                     icon: 'success',
+                     text: response.alert
+                  })
+               }
+               reloadTable();
+               $('#id_kandidat').val('');
+               $('#namaKetua').val('');
+               $('#namaWakil').val('');
+               $('#tambahKandidat').modal('hide');
+            }
+         })
+      }
+
+      //hapus data
+      function ButtonHapus(id_kandidat) {
+         Swal.fire({
+            title: 'Hapus data ?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Iya',
+            cancelButtonText: 'Batal',
+            closeOnConfirm: false,
+            closeOnCancel: false
+         }).then((result) => {
+            if (result.isConfirmed) {
+
+               $.ajax({
+                  url: base + 'kandidat/hapuskandidat/' + id_kandidat,
+                  type: 'POST',
+                  data: {
+                     id_kandidat: id_kandidat
+                  },
+                  dataType: 'json',
+                  success: function(response) {
+                     Swal.fire({
+                        icon: 'success',
+                        text: response.alert,
+                     })
+                     reloadTable();
+                  }
+               })
+
+            }
+         })
+      }
+
+      //edit data
+      $('#ButtonEdit').click(function(e) {
+         e.preventDefault()
+         let id_kandidat = $('#id_kandidat').val();
+         let nama_ketua = $('#nama_ketua').val();
+         let nama_wakil = $('#nama_wakil').val();
+
+         $.ajax({
+            url: base + 'kandidat/editKandidat/' + id_kandidat,
+            type: 'POST',
+            data: {
+               id_kandidat: id_kandidat,
+               nama_ketua: nama_ketua,
+               nama_wakil: nama_wakil
+            },
+            dataType: 'json',
+            cache: false,
+            success: function(response) {
+               if (response.sukses == false) {
+                  Swal.fire({
+                     icon: 'error',
+                     text: response.alert,
+                  })
+               } else {
+                  Swal.fire({
+                     icon: 'success',
+                     text: response.alert
+                  })
+               }
+               reloadTable();
+               $('#editKandidat').modal('hide');
+            }
+         })
+      })
+   </script>

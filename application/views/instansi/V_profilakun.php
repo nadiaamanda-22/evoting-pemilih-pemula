@@ -15,7 +15,7 @@
             <div class="cardakun shadow p-3 mb-5 bg-body rounded" style="max-width: 540px;">
                <div class="row g-0">
                   <div class="col-md-4">
-                     <img src="<?= base_url('assets/gambar/user.jpg') ?>" width="150" height="150" class="img-fluid rounded-start">
+                     <img src="<?= base_url('assets/gambar/logo/logokpu.png') ?>" width="150" height="150" class="img-fluid rounded-start">
                   </div>
                   <div class="col-md-8">
                      <div class="card-body">
@@ -53,16 +53,6 @@
                               <label class="col-lg-6 col-sm-4 control-label">Password</label>
                               <div class="col-md-12">
                                  <input type="password" class="form-control" id="exampleFormControlInput1">
-                              </div>
-                           </div>
-
-                           <div class="form-group" style="margin-bottom: 20px;">
-                              <label class="col-lg-6 col-sm-4 control-label">Foto Profil</label>
-                              <div class="col-md-12">
-                                 <div class="custom-file">
-                                    <label class="custom-file-label" for="formFile">Pilih File</label>
-                                    <input class="custom-file-input" type="file" id="formFile">
-                                 </div>
                               </div>
                            </div>
 

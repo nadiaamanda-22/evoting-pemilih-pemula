@@ -21,6 +21,9 @@
    <!-- my css -->
    <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
 
+   <!-- jquery -->
+   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
    <style>
       body {
          font-family: 'Poppins';
@@ -127,6 +130,10 @@
 
 <body>
 
+   <script>
+      const base = '<?= base_url() ?>'
+   </script>
+
    <!-- <script src="<?= base_url('assets/backend/') ?>vendor/jquery/jquery.min.js"></script> -->
    <!-- login -->
    <section id="login">
@@ -142,9 +149,10 @@
                      <h5 class="text-center lh-sm">E-Voting</h5>
                      <hr>
                      <div class="inputlogin mt-5">
-                        <form id="formlogin" method="POST" action="<?= base_url('Login') ?>">
+                        <form id="formlogin">
                            <div class="mb-3 NPM">
-                              <label for="npm" class="form-label">Username</label>
+                              <input type="hidden" id="id_auth">
+                              <label for="username" class="form-label">Username</label>
                               <input type="text" class=" form-control" name="username" id="username" placeholder="Masukkan username">
                            </div>
                            <div class="mb-3 password">
@@ -152,7 +160,7 @@
                               <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan password">
                            </div>
                            <div class="submit text-center">
-                              <button type="submit" class="btnmasuk">Login</button>
+                              <button type="button" class="btnmasuk" onclick="ButtonLogin()">Login</button>
                            </div>
 
                         </form>
@@ -162,10 +170,57 @@
             </div>
          </div>
    </section>
+
    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+   <!-- jquery easing -->
+   <!-- <script src="<?= base_url('assets/libs/jquery.easing/jquery.easing.min.js') ?>"></script> -->
 
+   <script>
+      function ButtonLogin() {
+         let username = $('#username').val();
+         let password = $('#password').val();
+         $.ajax({
+            url: "<?= base_url('login/login') ?>",
+            data: {
+               id_auth: id_auth,
+               username: username,
+               password: password
+            },
+            dataType: 'json',
+            type: 'POST',
+            cache: false,
+         })
+      }
+      // success: function(response) {
+      //    if (response.sukses == false) {
+      //       Swal.fire({
+      //          icon: 'error',
+      //          text: response.alert,
+      //       })
+      //    } else {
+      //       Swal.fire({
+      //          icon: 'success',
+      //          text: response.alert
+      //       })
+      //    }
+      //    reloadTable();
+      //    $('#id_pemilih').val('');
+      //    $('#tUsername').val('');
+      //    $('#tNamaPemilih').val('');
+      //    $('#jk_pemilih').val('');
+      //    $('#tNamaIbu').val('');
+      //    $('#tNik').val('');
+      //    $('#tPassword').val('');
+      //    $('#tEmail').val('');
+      //    $('#tImei').val('');
+      //    $('#tambahDpt').modal('hide');
+      // }
+      //    })
+      // }
+   </script>
 
 </body>
+
 
 </html>

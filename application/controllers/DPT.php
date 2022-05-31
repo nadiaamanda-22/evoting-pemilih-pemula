@@ -25,9 +25,9 @@ class DPT extends CI_Controller
    {
       $api = $this->curl->simple_get($this->api);
       $decode = json_decode($api, true);
-      $apirole = $decode['data'];
+      $apidpt = $decode['data'];
 
-      echo json_encode($apirole);
+      echo json_encode($apidpt);
    }
 
 

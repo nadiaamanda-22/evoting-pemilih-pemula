@@ -26,9 +26,9 @@
                      </div>
 
                      <!-- tombol import -->
-                     <div class="col-lg-4">
+                     <!-- <div class="col-lg-4">
                         <a href="" class="btn btn-gradient mb-3 warnaprimer" data-bs-toggle="modal" data-bs-target="#importData"><i class="fas fa-upload"></i> Import Data</a>
-                     </div>
+                     </div> -->
                      <!-- tombol export -->
                      <div class="col-lg-4">
                         <div class="dropdown">
@@ -311,10 +311,13 @@
                },
                {
                   render: function(full, type, data, meta) {
-                     // `<?php if ($status_pemilihan = 0) : ?>
-                     //    <?= "Belum Memilih" ?>;
-                     //    <?php endif; ?>
-                     // `
+
+                     if (data.status_pemilihan == 0) {
+                        return "Belum Memilih"
+                     } else if (data.status_pemilihan == 1) {
+                        return "Sudah Memilih"
+                     }
+
                      return data.status_pemilihan;
                   }
                },

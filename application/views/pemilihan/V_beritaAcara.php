@@ -30,17 +30,15 @@
         margin-top: 20px;
      }
 
-     .breadcrumb {
-        background-color: #fff;
-     }
-
-     .breadcrumb-item a {
-        color: #d67d3e;
-     }
-
      .containerf1 ol li {
         margin-left: -17px;
         width: 700px;
+     }
+
+     .nav-tabs {
+        margin-top: 20px;
+        width: 200px;
+        margin-left: 20px;
      }
   </style>
 
@@ -66,20 +64,22 @@
                  </div>
                  <!-- end tombol -->
 
-                 <!-- breadcrumb -->
+                 <!-- tombol form -->
                  <div class="row">
-                    <nav aria-label="breadcrumb">
-                       <ol class="breadcrumb">
-                          <li class="breadcrumb-item"><a href="<?= base_url('Formlaporan/index') ?>">Form 1</a></li>
-                          <li class="breadcrumb-item"><a href="<?= base_url('Formlaporan/formDua') ?>">Form 2</a></li>
-                       </ol>
-                    </nav>
+                    <ul class="nav nav-tabs">
+                       <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="<?= base_url('Formlaporan/index') ?>">Form 1</a>
+                       </li>
+                       <li class=" nav-item">
+                          <a class="nav-link" href="<?= base_url('Formlaporan/formDua') ?>">Form 2</a>
+                       </li>
+                    </ul>
                  </div>
-                 <!-- end breadcrumb -->
+                 <!-- end tombol form -->
 
 
                  <!-- form 1 -->
-                 <div class="containerf1 shadow mb-5 bg-body rounded">
+                 <div class=" containerf1 shadow mb-5 bg-body rounded">
                     <h4>BERITA ACARA <br> PEMUNGUTAN DAN PENGHITUNGAN SUARA <br>PEMILIHAN UMUM KETUA DAN WAKIL KETUA BEM<br> UNIVERSITAS IBN KHALDUN BOGOR <br> PERIODE 2022-2023</h4>
 
                     <div class="row namains">

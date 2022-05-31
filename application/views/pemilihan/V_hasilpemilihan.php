@@ -4,6 +4,30 @@
         color: #d67d3e;
         text-decoration: none;
      }
+
+     .cardhasil .card-header {
+        text-align: center;
+        min-width: 10vw;
+        min-height: 5vh;
+        font-family: 'Poppins';
+     }
+
+     .cardLaporan {
+        text-align: center;
+     }
+
+     .cardLaporan .card-header {
+        font-weight: 500;
+        text-align: center;
+        font-size: 17px;
+        color: #fff;
+        background-color: #d67d3e;
+        font-family: 'Poppins';
+     }
+
+     .cardLaporan .row {
+        margin: 15px auto;
+     }
   </style>
 
 
@@ -58,66 +82,41 @@
                     </div>
                  </div>
 
-                 <!-- form berita acara -->
-                 <div class="col-xl-12 containerform">
-                    <div class="card-box pb-0 shadow p-3 mb-5 bg-body rounded">
-
-                       <div id="progressbarwizard" class="pull-in">
-                          <ul class="nav nav-tabs nav-justified">
-                             <li class="nav-item "><a href="#beritaAcara" data-bs-toggle="tab" class="nav-link">Laporan Berita Acara</a>
-                             </li>
-                          </ul>
-
-                          <div class="tab-content b-0 mb-0">
-
-                             <div id="bar" class="progress progress-striped progress-bar-info-alt">
-                                <div class="bar progress-bar progress-bar-info"></div>
-                             </div>
-
-                             <div class="tab-pane p-t-10" id="beritaAcara">
-                                <div class="row">
-                                   <div class="col-12">
-                                      <div class="p-20">
-
-
-                                         <div class="row mt-3" style="width: 570px;">
-                                            <!-- tombol isi form -->
-                                            <div class="col-lg-4">
-                                               <a href="<?= base_url('Formlaporan/index') ?>" class="btn btn-gradient mb-3 warnaprimer"><i class="fas fa-plus"></i> Isi Laporan</a>
-                                            </div>
-
-                                            <!-- tombol lihat form -->
-                                            <!-- <div class="col-lg-4">
-                                               <a href="<?= base_url('Formlaporan/index') ?>" class="btn btn-gradient mb-3 warnaprimer"><i class="fas fa-plus"></i> Lihat Laporan</a>
-                                            </div> -->
-
-                                            <!-- tombol cetak -->
-                                            <div class="col-lg-4" style="margin-left: -23px;">
-                                               <a href="<?= base_url('Formlaporan/BeritaAcara') ?>" class="btn btn-gradient mb-3 warnaprimer" target="_blank"><i class="fas fa-file-export"></i> Cetak Laporan</a>
-                                            </div>
-
-                                            <!-- tombol Upload -->
-                                            <div class="col-lg-4">
-                                               <a href="" class="btn btn-gradient mb-3 warnaprimer" data-bs-toggle="modal" data-bs-target="#uploadFormc1"><i class="fas fa-upload"></i> Upload Laporan</a>
-                                            </div>
-                                         </div>
-
-                                      </div>
-                                   </div>
-
-                                </div>
-                             </div>
-                             <!-- end form berita acara -->
+                 <!-- laporan berita acara -->
+                 <div class="card cardLaporan shadow mb-5 bg-body rounded">
+                    <div class="card-header">
+                       Laporan Berita Acara
+                    </div>
+                    <div class="card-body">
+                       <!-- tombol isi form -->
+                       <div class="row">
+                          <div class="col-lg-4">
+                             <a href="<?= base_url('Formlaporan/index') ?>" class="btn btn-gradient mb-3 warnaprimer"><i class="fas fa-plus"></i> Isi Laporan</a>
                           </div>
 
-                       </div>
-                    </div>
+                          <!-- tombol lihat form -->
+                          <!-- <div class="col-lg-4">
+                             <a href="<?= base_url('Formlaporan/index') ?>" class="btn btn-gradient mb-3 warnaprimer"><i class="fas fa-plus"></i> Lihat Laporan</a>
+                          </div> -->
 
+                          <!-- tombol cetak -->
+                          <div class="col-lg-4" style="margin-left: -23px;">
+                             <a href="<?= base_url('Formlaporan/BeritaAcara') ?>" class="btn btn-gradient mb-3 warnaprimer" target="_blank"><i class="fas fa-file-export"></i> Cetak Laporan</a>
+                          </div>
+
+                          <!-- tombol Upload -->
+                          <div class="col-lg-4">
+                             <a href="" class="btn btn-gradient mb-3 warnaprimer" data-bs-toggle="modal" data-bs-target="#uploadFormc1"><i class="fas fa-upload"></i> Upload Laporan</a>
+                          </div>
+                       </div>
+
+                    </div>
                  </div>
               </div>
+              <!-- end form berita acara -->
            </div>
-        </div>
 
+        </div>
      </div>
 
   </div>
