@@ -151,7 +151,6 @@
                      <div class="inputlogin mt-5">
                         <form id="formlogin">
                            <div class="mb-3 NPM">
-                              <input type="hidden" id="id_auth">
                               <label for="username" class="form-label">Username</label>
                               <input type="text" class=" form-control" name="username" id="username" placeholder="Masukkan username">
                            </div>
@@ -181,9 +180,8 @@
          let username = $('#username').val();
          let password = $('#password').val();
          $.ajax({
-            url: "<?= base_url('login/login') ?>",
+            url: base + 'login/login',
             data: {
-               id_auth: id_auth,
                username: username,
                password: password
             },

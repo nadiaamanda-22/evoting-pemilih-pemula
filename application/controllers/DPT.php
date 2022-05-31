@@ -102,7 +102,8 @@ class DPT extends CI_Controller
          curl_setopt($ch, CURLOPT_TIMEOUT, 1800);
          $result = curl_exec($ch);
          curl_close($ch);
-
+         var_dump($result);
+         die;
          $response = [
             'sukses' => TRUE,
             'alert' => 'Data berhasil ditambahkan'
