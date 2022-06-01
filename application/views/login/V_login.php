@@ -188,9 +188,11 @@
             dataType: 'json',
             type: 'POST',
             cache: false,
+            success: function(response) {
+               console.log(response.alert);
+            }
          })
       }
-      // success: function(response) {
       //    if (response.sukses == false) {
       //       Swal.fire({
       //          icon: 'error',

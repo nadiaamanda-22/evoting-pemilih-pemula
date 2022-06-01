@@ -186,12 +186,6 @@ router.delete('/hard_delete/:id', (req, res) => {
 
 router.post('/login',(req,res)=>{
     let modelAttr = AuthModel.rawAttributes;
-    let inputs = {};
-    Object.values(modelAttr).forEach((val) => {
-        inputs['username'] = req.body.username;
-        inputs['password'] = md5(req.body.password);
-    })
-
     AuthModel.findOne({
         where: Sequelize.and({username:req.body.username},Sequelize.literal('tb_auth.delete_at is null'))
     }).then(data => {

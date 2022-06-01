@@ -1,15 +1,16 @@
+require('dotenv').config();
 const express = require('express');
-const bodyParser = require('body-parser');
 const app = express();
+const routes = require('./config/routes');
+const middleware = require('./config/middleware');
+const bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
-const routes = require('./config/routes')
 
-app.use((req,res,next) =>{
-    res.setHeader('Access-Control-Allow-Origin','*');
-    res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,DELETE,OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers','Content-Type,Authorization');
-    next();
-})
+// app.use(userAgent.express());
+//app_middleware
+// console.log(app)
+middleware.app(app);
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 

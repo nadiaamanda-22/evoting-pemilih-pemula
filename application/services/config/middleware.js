@@ -1,12 +1,15 @@
 // const apiMiddleware = require('../middleware/apiMiddleware');
-const response = require('../helpers/response-parser');
+// const response = require('../helpers/response-parser');
 
 const middleware = {
     app: (app) => {
         app.use((req,res,next) =>{
             res.header("Access-Control-Allow-Origin","*");
-            res.header("Access-Control-Allow-Headers","Origin, user-email, user-password, X-Requested-With, Content-Type, Accept, X-APP-ID, X-ACCESS-TOKEN, X-REFRESH-TOKEN");
+            res.header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept, X-APP-ID, X-ACCESS-TOKEN, X-REFRESH-TOKEN");
             res.header("Access-Control-Allow-Methods","*");
+            // req.setHeader("Access-Control-Allow-Origin","*");
+            // req.setHeader("Access-Control-Allow-Methods","GET, POST, PUT, PATCH, DELETE, OPTIONS");
+            // req.setHeader("Access-Control-Allow-Headers","Content-Type, Authorization");
             next();
         });
     },
