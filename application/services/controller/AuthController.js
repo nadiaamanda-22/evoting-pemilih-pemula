@@ -6,7 +6,7 @@ const Sequelize = require('sequelize');
 const AuthModel = require('../models/AuthModel');
 const fs = require('fs');
 const md5 = require('md5')
-const {where} = require('sequelize');
+const {where, or} = require('sequelize');
 // const authController = {};
 router.get('/', (req, res) => {
 
@@ -187,13 +187,13 @@ router.delete('/hard_delete/:id', (req, res) => {
 router.post('/login',(req,res)=>{
     let modelAttr = AuthModel.rawAttributes;
     AuthModel.findOne({
-        where: Sequelize.and({username:req.body.username},Sequelize.literal('tb_auth.delete_at is null'))
+        where: Sequelize.and({username:req.body.username},Sequelize.or({id_role:'1'},{id_role:'2'}),Sequelize.literal('tb_auth.delete_at is null'))
     }).then(data => {
         if (data) {
             if (data.password != md5(req.body.password)) {
                 response.error(res, { error:  'Password Salah'});  
             }else{
-                response.success(res, {message:'Login Berhasil'});
+                response.success(res, {data:data, message:'Login Berhasil'});
             }
         }else{
             response.error(res, { error:  'Username Tidak Terdaftar'});  
@@ -201,3 +201,22 @@ router.post('/login',(req,res)=>{
     })    
 })
 module.exports = router;
+
+
+
+router.put('/updatepassword/:id', (req, res) => {
+    let modelAttr = AuthModel.rawAttributes;
+    let inputs = {};
+    Object.values(modelAttr).forEach((val) => {
+        inputs['password'] = md5(req.body.password)  
+    });
+    AuthModel.update(inputs, {
+        where: {
+            [AuthModel.primaryKeyAttribute]: req.params.id
+        }
+    }).then(data => {
+        response.success(res, { message: 'Ganti Password Berhasil!', data: inputs }); 
+    }).catch((err) => {
+        response.error(res, { error: 'Ganti Password Gagal' });
+    });
+});
